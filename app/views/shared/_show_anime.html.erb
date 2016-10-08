@@ -1,0 +1,14 @@
+<div id="anime-<%= anime.id %>">
+  <%= image_tag anime.image.url, alt: "Anime image", width: 125, height: 125 %>
+  <%= link_to anime.title, anime %>
+  <%= t "anime.category" %>
+  <%= anime.category.name %>
+  <%= t "anime.episode" %>
+  <%= anime.episode %>
+  <%= t "anime.status" %>
+  <%= anime.status %>
+  <%= t "anime.publish_year" %>
+  <%= anime.publish_year %>
+  <%= t "anime.description" %>
+  <%= anime.description %>
+</div>

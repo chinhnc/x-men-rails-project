@@ -1,0 +1,12 @@
+<div class="col-md-6 col-md-offset-3">
+  <%= render "shared/show_anime", anime: anime %>
+</div>
+<% if user_signed_in? %>
+  <%= pluralize anime.reviews.count, t("review") %>
+  <section id="review_form">
+    <%= render "shared/review_form", anime: anime %>
+  </section>
+  <div id="reviews_<%= anime.id %>">
+    <%= render @reviews, anime: anime if anime.reviews.any? %>
+  </div>
+<% end %>

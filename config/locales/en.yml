@@ -22,6 +22,16 @@
 en:
   hello: "Hello world"
   project_name: "Anime Review Site"
+  timetype: "%d-%m-%y %H:%M"
+  edit: "Edit"
+  close: "Close"
+  submit: "Submit"
+  success: "Success"
+  error: "Error"
+  review: "Review"
+  add_review: "Add review"
+  page_title:
+    all_animes: "All animes"
   static_pages:
     about:
       title: "About"
@@ -41,3 +51,9 @@ en:
       about: "About"
       help: "Help"
       contact: "Contact"
+  anime:
+    category: "Category"
+    episode: "Episode"
+    status: "Status"
+    publish_year: "Publish year"
+    description: "Description"

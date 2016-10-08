@@ -4,4 +4,6 @@ class Anime < ApplicationRecord
   belongs_to :category
 
   enum status: ["complete", "ongoing"]
+
+  mount_uploader :image, ImageUploader
 end

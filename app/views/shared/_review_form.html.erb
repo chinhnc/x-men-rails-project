@@ -1,0 +1,14 @@
+<%= form_for @review, html: {multipart: true} do |f| %>
+  <div class="row">
+    <div class="col-md-8">
+      <%= f.hidden_field :anime_id, value: anime.id %>
+      <%= f.text_area :content, rows: 3, placeholder: t("add_review"), required: true,
+        class: "form-control form-margin", id: "review_content_#{anime.id}" %>
+      <%= f.number_field :rate, step: 0.1 %>
+      <%= f.file_field :image %>
+    </div>
+    <div class="col-md-2">
+      <%= f.submit t("submit"), class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>
