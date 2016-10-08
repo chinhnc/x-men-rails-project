@@ -1,0 +1,43 @@
+<div id="review_<%= review.id %>">
+  <div class="row">
+    <div class="col-md-10">
+      <b><%= link_to review.user.name, review.user %></b>
+      <%= review.created_at.strftime t("timetype") %>
+      <%= image_tag review.image.url, alt: "Review image", width: 125, height: 125 %>
+      <%= review.content %>
+    </div>
+    <div class="col-md-2">
+      <button type="button" class="btn btn-primary btn-xs" data-toggle="modal"
+        data-target="<%= "#review_modal_#{review.id}" %>"><%= t "edit" %></button>
+      <%= form_for review, html: {multipart: true} do |f| %>
+        <div class="modal fade" id="<%= "review_modal_#{review.id}" %>"
+          tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                  <%= t "edit" %>
+                </h4>
+              </div>
+              <div class="modal-body">
+                <%= f.text_area :content, rows: 3, placeholder: t("add_review"), required: true,
+                  class: "form-control form-margin", id: "review_content_#{anime.id}" %>
+                <%= f.number_field :rate, step: 0.1 %>
+                <%= f.file_field :image %>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">
+                  <%= t "close" %>
+                </button>
+                <%= f.submit t("submit"), class: "btn btn-primary" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

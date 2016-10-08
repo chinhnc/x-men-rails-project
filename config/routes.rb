@@ -10,4 +10,6 @@ Rails.application.routes.draw do
     unlock: "unblock", registration: "register", sign_up: "" }
 
   resources :users
+  resources :animes, only: [:index, :show]
+  resources :reviews
 end

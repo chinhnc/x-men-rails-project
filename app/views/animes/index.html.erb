@@ -1,0 +1,6 @@
+<% provide :title, t("page_title.all_animes") %>
+<h1><%= t "page_title.all_animes" %></h1>
+
+<% @animes.each do |anime| %>
+  <%= render "shared/show_anime", anime: anime %>
+<% end %>
