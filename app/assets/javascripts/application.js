@@ -14,7 +14,6 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require turbolinks
-//= require ckeditor/init
 //= require_tree .
 
 $(document).on('ready', function() {
@@ -24,3 +23,7 @@ $(document).on('ready', function() {
 function set_timetout() {
   $('.alert').delay(1500).slideUp();
 }
+
+var loadFile = function(event) {
+  document.getElementById('image_preview').src = URL.createObjectURL(event.target.files[0]);
+};

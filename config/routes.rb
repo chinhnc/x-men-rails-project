@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  mount Ckeditor::Engine => "/ckeditor"
   mount LikeDislike::Engine, at: "/"
   root "static_pages#home"
   get "help" => "static_pages#help"

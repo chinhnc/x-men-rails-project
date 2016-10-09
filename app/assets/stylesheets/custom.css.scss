@@ -23,6 +23,14 @@ a:hover {
   text-decoration: none;
 }
 
+.pull-left {
+  float: left;
+}
+
+.pull-right {
+  float: right;
+}
+
 /* header */
 
 .logo {
@@ -70,9 +78,6 @@ footer ul li {
   display: none;
 }
 
-.review-hover:hover {
-  box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
-  .review-attributes-visible {
-    display: block;
-  }
+.review-hover:hover .review-attributes-visible {
+  display: block;
 }

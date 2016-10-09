@@ -4,7 +4,7 @@ class CreateAnimes < ActiveRecord::Migration[5.0]
       t.string :title
       t.string :description
       t.integer :episode
-      t.string :image
+      t.attachment :image
       t.integer :status
       t.string :publish_year
       t.references :category, index: true, foreign_key: true

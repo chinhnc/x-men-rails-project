@@ -1,18 +1,24 @@
-<div class="well" id="comment_<%= comment.id %>">
+<div class="well well-sm col-md-10 col-md-offset-2" id="comment_<%= comment.id %>">
   <%= link_to comment.user.name, comment.user %>
-  <p class="text-muted"><%= comment.root? ? "Started by" : "Replied by" %> on
-    <%= l(comment.created_at, format: '%B, %d %Y %H:%M:%S') %></p>
-
-  <blockquote>
-    <p><%= comment.content %></p>
-  </blockquote>
-  <% if can? :manage, comment %>
-    <%= link_to t(:edit), edit_comment_path(comment), comment: comment,
-      remote: true %>
-    <%= link_to "", comment, method: :delete, remote: true, data: {confirm: t("confirm")},
-      class: "glyphicon glyphicon-remove" %>
-  <% end %>
-  </br>
+  <p class="text-muted"><%= comment.root? ? "Commented at" : "Replied at" %>
+    <%= l comment.created_at, format: :long %></p>
+  <p><%= comment.content %></p>
+  <div class="pull-right">
+    <% if can? :manage, comment %>
+      <small>
+        <%= link_to edit_comment_path(comment), comment: comment,
+          remote: true do %>
+          <i class="glyphicon glyphicon-edit"></i>&nbsp;
+          <%= t "edit" %>
+        <% end %>
+        <%= link_to comment, method: :delete,
+          data: {confirm: t("confirm")}, remote: true do %>
+          <i class="glyphicon glyphicon-remove"></i>&nbsp;
+          <%= t "delete" %>
+        <% end %>
+      </small>
+    <% end %>
+  </div>
   <% from_reply_form ||= nil %>
   <% unless from_reply_form %>
     <% if comment.leaf? %>
