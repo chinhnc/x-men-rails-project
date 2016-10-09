@@ -1,0 +1,23 @@
+<div class="well" id="comment_<%= comment.id %>">
+  <h2><%= link_to comment.user.name, comment.user %></h2>
+  <p class="text-muted"><%= comment.root? ? "Started by" : "Replied by" %> on
+    <%= l(comment.created_at, format: '%B, %d %Y %H:%M:%S') %></p>
+
+  <blockquote>
+    <p><%= comment.content %></p>
+  </blockquote>
+  <% if can? :manage, comment %>
+    <%= link_to t(:edit), edit_comment_path(comment), comment: comment,
+      remote: true %>
+    <%= link_to "", comment, method: :delete, remote: true, data: {confirm: t("confirm")},
+      class: "glyphicon glyphicon-remove" %>
+  <% end %>
+  </br>
+  <% from_reply_form ||= nil %>
+  <% unless from_reply_form %>
+    <% if comment.leaf? %>
+      <small class="text-muted"><%= t :noreply %></small>
+    <% end %>
+    <p><%= link_to "reply", new_comment_path(comment.id, review: comment.review) %></p>
+  <% end %>
+</div>

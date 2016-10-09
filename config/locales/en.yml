@@ -57,3 +57,6 @@ en:
     status: "Status"
     publish_year: "Publish year"
     description: "Description"
+  addcomment: "Add your comment"
+  confirm: "Are you sure?"
+  noreply: "There are no replies yet - be the first one to reply!"

@@ -14,4 +14,6 @@ Rails.application.routes.draw do
   resources :animes, only: [:index, :show]
   resources :reviews, only: [:create, :update]
   resources :votes, only: [:create, :destroy]
+  resources :comments, only: [:index, :create, :destroy, :edit, :update]
+  get '/comments/new/(:parent_id)', to: 'comments#new', as: :new_comment
 end

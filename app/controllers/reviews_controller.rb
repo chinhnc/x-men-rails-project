@@ -1,6 +1,9 @@
 class ReviewsController < ApplicationController
+  load_and_authorize_resource
+
   def create
     @review = current_user.reviews.build review_params
+    @comments = Comment.hash_tree
     unless @review.save
       flash[:alert] = t "error"
     end
@@ -8,7 +11,6 @@ class ReviewsController < ApplicationController
   end
 
   def update
-    @review = Review.find_by_id params[:id]
     if @review.update_attributes review_params
       flash[:success] = t "success"
     else
