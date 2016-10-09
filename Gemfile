@@ -14,6 +14,8 @@ gem "bootstrap-sass", "3.3.6"
 gem "carrierwave", ">= 1.0.0.beta", "< 2.0"
 gem "fog", "~> 1.38"
 gem "like_dislike"
+gem "closure_tree"
+gem "cancancan", "~> 1.10"
 
 group :development, :test do
   gem "byebug", platform: :mri

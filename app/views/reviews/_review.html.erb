@@ -44,3 +44,5 @@
     </div>
   </div>
 </div>
+<%= link_to "comment", new_comment_path(review: review), class: "btn btn-primary btn-lg" %>
+<%= comments_tree_for @comments %>
