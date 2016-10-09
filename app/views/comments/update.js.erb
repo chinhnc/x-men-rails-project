@@ -1,2 +1,7 @@
-$("#comment_<%= @comment.id %>").html("<%= j render "comments/comment",
-  comment: @comment %>");
+<% if @comment.save %>
+  $("#error_mesages").html("");
+  $("#comment_<%= @comment.id %>").html("<%= j render "comments/comment",
+    comment: @comment %>");
+<% else %>
+  $("#error_mesages").append("<%= j render "shared/error_messages", object: @comment %>");
+<% end %>

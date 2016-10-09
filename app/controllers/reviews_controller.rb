@@ -10,17 +10,27 @@ class ReviewsController < ApplicationController
     redirect_to @review.anime
   end
 
+  def edit
+  end
+
   def update
-    if @review.update_attributes review_params
-      flash[:success] = t "success"
-    else
-      flash[:danger] = t "error"
+    @review.update_attributes review_params
+    respond_to do |format|
+      format.html {redirect_to @review.anime}
+      format.js
     end
-    redirect_to @review.anime
+  end
+
+  def destroy
+    @review.destroy
+    respond_to do |format|
+      format.html {redirect_to @review.anime}
+      format.js
+    end
   end
 
   private
   def review_params
-    params.require(:review).permit :content, :rate, :image, :anime_id
+    params.require(:review).permit :content, :rate, :anime_id
   end
 end

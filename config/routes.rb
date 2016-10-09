@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  mount LikeDislike::Engine, at: '/'
+  mount Ckeditor::Engine => "/ckeditor"
+  mount LikeDislike::Engine, at: "/"
   root "static_pages#home"
   get "help" => "static_pages#help"
   get "about" => "static_pages#about"
@@ -12,8 +13,8 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show]
   resources :animes, only: [:index, :show]
-  resources :reviews, only: [:create, :update]
+  resources :reviews
   resources :votes, only: [:create, :destroy]
   resources :comments, only: [:index, :create, :destroy, :edit, :update]
-  get '/comments/new/(:parent_id)', to: 'comments#new', as: :new_comment
+  get "/comments/new/(:parent_id)", to: "comments#new", as: :new_comment
 end

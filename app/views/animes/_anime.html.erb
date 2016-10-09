@@ -1,10 +1,10 @@
-<div class="col-md-6 col-md-offset-3">
-  <%= render "shared/show_anime", anime: anime %>
-</div>
+<%= render "shared/show_anime", anime: anime %>
 <% if user_signed_in? %>
-  <%= pluralize anime.reviews.count, t("review") %>
+  <div id="review_count">
+    <%= pluralize anime.reviews.count, t("review") %>
+  </div>
   <section id="review_form">
-    <%= render "shared/review_form", anime: anime %>
+    <%= render "shared/review_form", anime: anime unless current_user.review_anime?(anime.id).present? %>
   </section>
   <div id="reviews_<%= anime.id %>">
     <%= render @reviews, anime: anime if anime.reviews.any? %>

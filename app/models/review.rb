@@ -6,6 +6,4 @@ class Review < ApplicationRecord
 
   belongs_to :user
   belongs_to :anime
-
-  mount_uploader :image, ImageUploader
 end
