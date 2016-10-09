@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount LikeDislike::Engine, at: '/'
   root "static_pages#home"
   get "help" => "static_pages#help"
   get "about" => "static_pages#about"
@@ -9,7 +10,8 @@ Rails.application.routes.draw do
     password: "secret", confirmation: "verification",
     unlock: "unblock", registration: "register", sign_up: "" }
 
-  resources :users
+  resources :users, only: [:show]
   resources :animes, only: [:index, :show]
-  resources :reviews
+  resources :reviews, only: [:create, :update]
+  resources :votes, only: [:create, :destroy]
 end
