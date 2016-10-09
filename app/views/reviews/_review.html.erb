@@ -3,10 +3,13 @@
     <div class="col-md-10">
       <b><%= link_to review.user.name, review.user %></b>
       <%= review.created_at.strftime t("timetype") %>
-      <%= image_tag review.image.url, alt: "Review image", width: 125, height: 125 %>
+      <%= image_tag(review.image.url, alt: "Review image", width: 125, height: 125) if review.image.url %>
       <%= review.content %>
     </div>
     <div class="col-md-2">
+      <span class="votes">
+        <%= render "reviews/votes", review: review %>
+      </span>
       <button type="button" class="btn btn-primary btn-xs" data-toggle="modal"
         data-target="<%= "#review_modal_#{review.id}" %>"><%= t "edit" %></button>
       <%= form_for review, html: {multipart: true} do |f| %>
