@@ -4,6 +4,8 @@ class CreateVotes < ActiveRecord::Migration
 
       t.references :votable, :polymorphic => true
       t.references :voter, :polymorphic => true
+      t.references :user, index: true, foreign_key: true
+      t.references :review, index: true, foreign_key: true
 
       t.boolean :vote_flag
       t.string :vote_scope

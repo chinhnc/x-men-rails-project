@@ -1,0 +1,7 @@
+<% if @review.save %>
+  $("#error_mesages").html("");
+  $("#review_<%= @review.id %>").html("<%= j render "reviews/review",
+    review: @review %>");
+<% else %>
+  $("#error_mesages").append("<%= j render "shared/error_messages", object: @review %>");
+<% end %>

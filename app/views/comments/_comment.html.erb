@@ -1,5 +1,5 @@
 <div class="well" id="comment_<%= comment.id %>">
-  <h2><%= link_to comment.user.name, comment.user %></h2>
+  <%= link_to comment.user.name, comment.user %>
   <p class="text-muted"><%= comment.root? ? "Started by" : "Replied by" %> on
     <%= l(comment.created_at, format: '%B, %d %Y %H:%M:%S') %></p>
 
