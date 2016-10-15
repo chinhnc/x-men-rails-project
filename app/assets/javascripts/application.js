@@ -15,6 +15,8 @@
 //= require bootstrap
 //= require turbolinks
 //= require_tree .
+//= require filterrific/filterrific-jquery
+//= require chardinjs
 
 $(document).on('ready', function() {
   set_timetout();

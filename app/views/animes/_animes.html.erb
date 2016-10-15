@@ -1,0 +1,5 @@
+<% @animes.each do |anime| %>
+  <%= render "shared/show_anime", anime: anime %>
+<% end %>
+
+<%= will_paginate @animes %>

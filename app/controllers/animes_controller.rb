@@ -1,6 +1,12 @@
 class AnimesController < ApplicationController
   def index
-    @animes = Anime.all
+    @filterrific = initialize_filterrific( Anime, params[:filterrific]
+    ) or return
+    @animes = @filterrific.find.paginate page: params[:page]
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def show
