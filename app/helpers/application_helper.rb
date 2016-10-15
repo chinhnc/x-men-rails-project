@@ -7,4 +7,9 @@ module ApplicationHelper
       page_title + " | " + base_title
     end
   end
+
+  def image_preview object
+    image_tag object.image.exists? ? object.image.url : "sao.jpg",
+      id: "image_preview", class: "img-responsive", size: "300x300"
+  end
 end

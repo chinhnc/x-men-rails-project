@@ -1,23 +1,36 @@
-<div id="review_<%= review.id %>" class="review-hover">
-  <div class="row">
-    <div class="col-md-10">
-      <b><%= link_to review.user.name, review.user %></b>
-      <%= review.created_at.strftime t("timetype") %>
-      <%= review.rate %>
-      <%= raw review.content %>
-    </div>
-    <div class="col-md-2 review-attributes-visible">
-      <span class="votes">
-        <%= render "reviews/votes", review: review %>
-      </span>
-      <% if can? :manage, review %>
-        <%= link_to t(:edit), edit_review_path(review), review: review,
-          remote: true %>
-        <%= link_to "", review, method: :delete, remote: true,
-          data: {confirm: t("confirm")}, class: "glyphicon glyphicon-remove" %>
-      <% end %>
-    </div>
+<div id="review_<%= review.id %>" class="well well-lg review-hover">
+  <b><%= link_to review.user.name, review.user %></b>
+  <p class="text-muted"><%= "Review " %>&#9900;
+    <%= l review.created_at, format: :long %></p>
+  <div class="">
+    <%= t "rate" %>
+    <%= review.rate %>
   </div>
+  <%= image_tag review.image.url(:medium), alt: "Review image" if review.image.exists? %>
+  <blockquote>
+    <h3><%= review.title %></h3>
+    <%= review.content %>
+  </blockquote>
+  <div class="pull-right review-attributes-visible">
+    <span class="votes">
+      <%= render "reviews/votes", review: review %>
+    </span>
+    <% if can? :manage, review %>
+      <small>
+        <%= link_to edit_review_path(review), review: review,
+          remote: true do %>
+          <i class="glyphicon glyphicon-edit"></i>&nbsp;
+          <%= t "edit" %>
+        <% end %>
+        <%= link_to review, method: :delete,
+          data: {confirm: t("confirm")}, remote: true do %>
+          <i class="glyphicon glyphicon-remove"></i>&nbsp;
+          <%= t "delete" %>
+        <% end %>
+      </small>
+    <% end %>
+  </div>
+  <%= link_to "Add a comment", new_comment_path(review: review),
+    class: "btn btn-primary btn-sm" %>
 </div>
-<%= link_to "comment", new_comment_path(review: review), class: "btn btn-primary btn-sm" %>
 <%= comments_tree_for @comments %>

@@ -1,14 +1,30 @@
-<div id="anime-<%= anime.id %>">
-  <%= image_tag anime.image.url, alt: "Anime image", width: 125, height: 125 %>
-  <%= link_to anime.title, anime %>
-  <%= t "anime.category" %>
-  <%= anime.category.name %>
-  <%= t "anime.episode" %>
-  <%= anime.episode %>
-  <%= t "anime.status" %>
-  <%= anime.status %>
-  <%= t "anime.publish_year" %>
-  <%= anime.publish_year %>
-  <%= t "anime.description" %>
-  <%= anime.description %>
+<div id="anime-<%= anime.id %>" class="row">
+  <%= image_tag anime.image.url, alt: "Anime image", width: 125, height: 125,
+    class: "pull-left" %>
+  <div class="">
+    <%= link_to anime.title, anime %>
+  </div>
+  <div class="">
+    <%= t "anime.category" %>:
+    <%= anime.category.name %>
+  </div>
+  <div class="">
+    <%= t "anime.publish_year" %>:
+    <%= anime.publish_year %>
+  </div>
+  <div class="">
+    <%= t "anime.episode" %>:
+    <%= anime.episode %>
+  </div>
+  <div class="">
+    <%= t "anime.status" %>:
+    <%= anime.status %>
+  </div>
+  <div class="">
+    <%= t "anime.description" %>:
+    <%= anime.description %>
+  </div>
+  <div id="review_count">
+    <%= pluralize anime.reviews.count, t("review") %>
+  </div>
 </div>

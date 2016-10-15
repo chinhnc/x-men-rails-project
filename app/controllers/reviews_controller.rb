@@ -25,12 +25,11 @@ class ReviewsController < ApplicationController
     @review.destroy
     respond_to do |format|
       format.html {redirect_to @review.anime}
-      format.js
     end
   end
 
   private
   def review_params
-    params.require(:review).permit :content, :rate, :anime_id
+    params.require(:review).permit :title, :content, :image, :rate, :anime_id
   end
 end

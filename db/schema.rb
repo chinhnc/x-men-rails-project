@@ -10,18 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161009224612) do
+ActiveRecord::Schema.define(version: 20161009065554) do
 
   create_table "animes", force: :cascade do |t|
     t.string   "title"
     t.string   "description"
     t.integer  "episode"
-    t.string   "image"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
     t.integer  "status"
     t.string   "publish_year"
     t.integer  "category_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.index ["category_id"], name: "index_animes_on_category_id"
   end
 
@@ -29,21 +32,6 @@ ActiveRecord::Schema.define(version: 20161009224612) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "ckeditor_assets", force: :cascade do |t|
-    t.string   "data_file_name",               null: false
-    t.string   "data_content_type"
-    t.integer  "data_file_size"
-    t.integer  "assetable_id"
-    t.string   "assetable_type",    limit: 30
-    t.string   "type",              limit: 30
-    t.integer  "width"
-    t.integer  "height"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
-    t.index ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable"
-    t.index ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type"
   end
 
   create_table "comment_hierarchies", id: false, force: :cascade do |t|
@@ -66,7 +54,12 @@ ActiveRecord::Schema.define(version: 20161009224612) do
   end
 
   create_table "reviews", force: :cascade do |t|
+    t.string   "title"
     t.string   "content"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
     t.float    "rate"
     t.integer  "user_id"
     t.integer  "anime_id"
