@@ -30,7 +30,6 @@
       </small>
     <% end %>
   </div>
-  <%= link_to "Add a comment", new_comment_path(review: review),
+  <%= link_to t("addacomment"), review_path(review),
     class: "btn btn-primary btn-sm" %>
 </div>
-<%= comments_tree_for @comments %>

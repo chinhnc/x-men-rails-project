@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161009065554) do
+ActiveRecord::Schema.define(version: 20161009033339) do
 
   create_table "animes", force: :cascade do |t|
     t.string   "title"
@@ -34,21 +34,12 @@ ActiveRecord::Schema.define(version: 20161009065554) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "comment_hierarchies", id: false, force: :cascade do |t|
-    t.integer "ancestor_id",   null: false
-    t.integer "descendant_id", null: false
-    t.integer "generations",   null: false
-    t.index ["ancestor_id", "descendant_id", "generations"], name: "comment_anc_desc_udx", unique: true
-    t.index ["descendant_id"], name: "comment_desc_idx"
-  end
-
   create_table "comments", force: :cascade do |t|
     t.string   "content"
     t.integer  "user_id"
     t.integer  "review_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "parent_id"
     t.index ["review_id"], name: "index_comments_on_review_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
