@@ -15,7 +15,6 @@ gem "paperclip", "~> 5.1"
 gem "mini_magick", "~> 4.5", ">= 4.5.1"
 gem "fog", "~> 1.38"
 gem "like_dislike"
-gem "closure_tree"
 gem "cancancan", "~> 1.10"
 
 group :development, :test do

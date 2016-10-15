@@ -1,0 +1,19 @@
+<%= render @review %>
+
+<div class="clearfix"></div></br>
+<div id="comments">
+  <div id="comment_count">
+    <%= pluralize @review.comments.count, t("comments") %>
+  </div>
+  </br>
+
+  <div id="error_messages"></div>
+
+  <div id="comment_<%= @review.id %>">
+    <%= render @review.comments, review: @review if @review.comments.any? %>
+  </div>
+
+  <div class="comment-form" id="comment-form">
+    <%= render "shared/comment_form", review: @review %>
+  </div>
+</div>

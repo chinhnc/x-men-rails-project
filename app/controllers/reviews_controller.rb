@@ -3,11 +3,14 @@ class ReviewsController < ApplicationController
 
   def create
     @review = current_user.reviews.build review_params
-    @comments = Comment.hash_tree
     unless @review.save
       flash[:alert] = t "error"
     end
     redirect_to @review.anime
+  end
+
+  def show
+    @comment = Comment.new
   end
 
   def edit
@@ -22,10 +25,10 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
+    @anime = @review.anime
     @review.destroy
-    respond_to do |format|
-      format.html {redirect_to @review.anime}
-    end
+    flash[:success] = t :destroysuccess
+    redirect_to @anime
   end
 
   private

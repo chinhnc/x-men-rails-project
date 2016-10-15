@@ -60,4 +60,7 @@ en:
     description: "Description"
   addcomment: "Add your comment"
   confirm: "Are you sure?"
-  noreply: "There are no replies yet - be the first one to reply!"
+  destroysuccess: "Review deleted!"
+  comments: "Comments"
+  addacomment: "Add a comment"
+  commentupdated: "Comment updated!"

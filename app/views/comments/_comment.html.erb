@@ -1,29 +1,25 @@
-<div class="well well-sm col-md-10 col-md-offset-2" id="comment_<%= comment.id %>">
-  <%= link_to comment.user.name, comment.user %>
-  <p class="text-muted"><%= comment.root? ? "Commented at" : "Replied at" %>
-    <%= l comment.created_at, format: :long %></p>
-  <p><%= comment.content %></p>
-  <div class="pull-right">
-    <% if can? :manage, comment %>
-      <small>
-        <%= link_to edit_comment_path(comment), comment: comment,
-          remote: true do %>
-          <i class="glyphicon glyphicon-edit"></i>&nbsp;
-          <%= t "edit" %>
-        <% end %>
-        <%= link_to comment, method: :delete,
-          data: {confirm: t("confirm")}, remote: true do %>
-          <i class="glyphicon glyphicon-remove"></i>&nbsp;
-          <%= t "delete" %>
-        <% end %>
-      </small>
-    <% end %>
+<div id="comment_<%= comment.id %>">
+  <div class="well well-sm col-md-10 col-md-offset-2">
+    <%= link_to comment.user.name, comment.user %>
+    <p class="text-muted">
+      <%= l(comment.created_at, format: '%B, %d %Y %H:%M:%S') %>
+    </p>
+    <p><%= comment.content %></p>
+    <div class="pull-right">
+      <% if can? :manage, comment %>
+        <small>
+          <%= link_to edit_comment_path(comment), comment: comment,
+            remote: true do %>
+            <i class="glyphicon glyphicon-edit"></i>&nbsp;
+            <%= t "edit" %>
+          <% end %>
+          <%= link_to comment, method: :delete,
+            data: {confirm: t("confirm")}, remote: true do %>
+            <i class="glyphicon glyphicon-remove"></i>&nbsp;
+            <%= t "delete" %>
+          <% end %>
+        </small>
+      <% end %>
+    </div>
   </div>
-  <% from_reply_form ||= nil %>
-  <% unless from_reply_form %>
-    <% if comment.leaf? %>
-      <small class="text-muted"><%= t :noreply %></small>
-    <% end %>
-    <p><%= link_to "reply", new_comment_path(comment.id, review: comment.review) %></p>
-  <% end %>
 </div>
