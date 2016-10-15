@@ -16,6 +16,9 @@ gem "mini_magick", "~> 4.5", ">= 4.5.1"
 gem "fog", "~> 1.38"
 gem "like_dislike"
 gem "cancancan", "~> 1.10"
+gem "filterrific"
+gem "chardinjs-rails"
+gem "will_paginate"
 
 group :development, :test do
   gem "byebug", platform: :mri
