@@ -19,6 +19,7 @@ gem "cancancan", "~> 1.10"
 gem "filterrific"
 gem "chardinjs-rails"
 gem "will_paginate"
+gem "public_activity"
 
 group :development, :test do
   gem "byebug", platform: :mri
