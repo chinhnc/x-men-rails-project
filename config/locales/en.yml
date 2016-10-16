@@ -46,12 +46,17 @@ en:
       signup: "Sign up"
       login: "Log in"
       logout: "Log out"
-      edit_profile: "Edit profile"
+      profile: "Profile"
       anime: "Anime"
     footer:
       about: "About"
       help: "Help"
       contact: "Contact"
+  activity:
+    review:
+      create: "reviewed on"
+    comment:
+      create: "added a comment to"
   anime:
     category: "Category"
     episode: "Episode"
@@ -59,6 +64,8 @@ en:
     publish_year: "Publish year"
     description: "Description"
     animes: "Animes"
+  user:
+    edit_profile: "Edit profile"
   addcomment: "Add your comment"
   confirm: "Are you sure?"
   destroysuccess: "Review deleted!"

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
   def show
-    @user = current_user
+    @activities = PublicActivity::Activity.order("created_at DESC").where owner_id: current_user.id
   end
 end

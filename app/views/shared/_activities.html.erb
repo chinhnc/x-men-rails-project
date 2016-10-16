@@ -1,0 +1,18 @@
+<ul class="list-group">
+  <% @activities.each do |activity| %>
+    <% if activity.trackable %>
+      <li class="list-group-item">
+        <span class="glyphicon glyphicon-plus"></span>
+        <small class="text-muted"><%= activity.created_at.strftime "%H:%M:%S %-d %B %Y" %></small><br/>
+        <strong><%= link_to activity.owner.name, activity.owner if activity.owner %></strong>
+        <%= render_activity activity, display: :i18n %>
+        <% if activity.trackable_type == "Review" %>
+          "<%= link_to activity.trackable.anime.title, activity.trackable.anime %>"
+        <% elsif activity.trackable_type == "Comment" %>
+          <%= link_to "review", activity.trackable.review %> of
+          "<%= link_to activity.trackable.review.anime.title, activity.trackable.review.anime %>"
+        <% end %>
+      </li>
+    <% end %>
+  <% end %>
+</ul>
