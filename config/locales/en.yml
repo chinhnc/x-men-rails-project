@@ -22,7 +22,7 @@
 en:
   hello: "Hello world"
   project_name: "Anime Review Site"
-  timetype: "%d-%m-%y %H:%M"
+  timetype: "%H:%M:%S %-d %B %Y"
   edit: "Edit"
   delete: "Delete"
   created_at: "Created at"
@@ -77,11 +77,11 @@ en:
     rate: "Rate"
   user:
     edit_profile: "Edit profile"
-  addcomment: "Add your comment"
   confirm: "Are you sure?"
   destroysuccess: "Review deleted!"
   comments: "Comments"
-  addacomment: "Add a comment"
+  add_comment: "Add a comment"
+  show_comments: "All %{number_of_comments} comments"
   commentupdated: "Comment updated!"
   search: "Search for anime names!"
   searchanime: "Search anime"

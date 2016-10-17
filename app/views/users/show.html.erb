@@ -6,7 +6,11 @@
     <h3>Information</h3>
     <div class="">
       <%= current_user.name %><br/>
-      <%= current_user.email %>
+      <%= current_user.email %><br/>
+      <%= "Review:" %>
+      <%= current_user.reviews.count %><br/>
+      <%= "Helpful rating:" %>
+      <%= (current_user.reviews.map {|review| review.get_likes.size}).inject(0, :+) %>
     </div>
     <%= link_to t("edit_profile"), edit_user_registration_path,
       class: "btn btn-default" %>

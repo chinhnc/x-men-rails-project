@@ -13,9 +13,6 @@ class ReviewsController < ApplicationController
     @comment = Comment.new
   end
 
-  def edit
-  end
-
   def update
     @review.update_attributes review_params
     respond_to do |format|
