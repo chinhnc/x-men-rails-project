@@ -1,0 +1,14 @@
+<% provide :title, @category.name %>
+<div class="center">
+  <h1><%= @category.name %></h1>
+  <%= pluralize @category.animes.count, t("admin.categories.animes") %>
+</div>
+
+<ul class="animes">
+  <% if @animes.any? %>
+    <% @animes.each do |anime| %>
+      <%= render "shared/show_anime", anime: anime %>
+    <% end %>
+    <%= will_paginate @animes %>
+  <% end %>
+</ul>
