@@ -48,6 +48,7 @@ en:
       logout: "Log out"
       profile: "Profile"
       anime: "Anime"
+      categories: "Categories"
     footer:
       about: "About"
       help: "Help"
@@ -64,6 +65,8 @@ en:
     publish_year: "Publish year"
     description: "Description"
     animes: "Animes"
+    new: "Add new anime"
+    remove: "Remove this anime"
   user:
     edit_profile: "Edit profile"
   addcomment: "Add your comment"
@@ -74,3 +77,21 @@ en:
   commentupdated: "Comment updated!"
   search: "Search for anime names!"
   searchanime: "Search anime"
+  admin:
+    categories:
+      allcategories: "All Categories"
+      newcategory: "New Category"
+      areyousure: "Are you sure?"
+      editcategory: "Edit Category"
+      createcategory: "Create Category"
+      animes: "animes"
+  save: "Save"
+  create: "Create"
+  addanimes: "Add anime"
+  searchs:
+    search: "Search"
+    addconditions: "Add Conditions"
+    sortby: "Sort by"
+    searchby: "Search by"
+    sort: "Sort"
+  time_format: "%c"

@@ -1,0 +1,33 @@
+<% if can? :manage, @users %>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th><%= sort_link @q, :created_at, t("category.name") %></th>
+        <th><%= sort_link @q, :created_at, t("created_at") %></th>
+        <th><%= t "edit" %></th>
+        <th><%= t "delete" %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @categories.each do |category| %>
+        <tr>
+          <td class="clickable-row" data-href="<%= admin_category_path category %>">
+            <%= link_to category.name, admin_category_path(category) %>
+          </td>
+          <td class="clickable-row" data-href="<%= admin_category_path category %>">
+            <%= category.created_at.strftime t "time_format" %>
+          </td>
+          <td>
+            <%= link_to t(:edit), edit_admin_category_path(category),
+              class: "btn btn-primary" %>
+          </td>
+          <td>
+            <%= link_to t(:delete), [:admin, category], method: :delete,
+              remote: true, data: {confirm: t("admin.categories.areyousure")},
+              class: "btn btn-danger" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

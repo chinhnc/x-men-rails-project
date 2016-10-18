@@ -1,0 +1,26 @@
+<% provide :title, t("admin.categories.createcategory") %>
+<h1><%= t "admin.categories.createcategory" %></h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for [:admin, @category] do |f| %>
+      <%= render "shared/error_messages", object: @category %>
+
+      <div class="form-group">
+        <%= f.label :name %>
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+
+      <h2><%= t :addanimes %></h2>
+      <%= f.fields_for :animes do |anime| %>
+        <%= render "anime_fields", f: anime %>
+      <% end %>
+
+      <div class="form-group">
+        <%= link_to_add_fields t("anime.new"), f, :animes %>
+      </div>
+
+      <%= f.submit t(:create), class: "btn btn-primary btn-block" %>
+    <% end %>
+  </div>
+</div>

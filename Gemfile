@@ -20,6 +20,7 @@ gem "filterrific"
 gem "chardinjs-rails"
 gem "will_paginate"
 gem "public_activity"
+gem "ransack"
 
 group :development, :test do
   gem "byebug", platform: :mri
