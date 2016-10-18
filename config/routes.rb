@@ -15,8 +15,14 @@ Rails.application.routes.draw do
   resources :reviews
   resources :votes, only: [:create, :destroy]
   resources :comments
-  
+
   namespace :admin do
     resources :categories
+    resources :animes do
+      collection do
+        match "search" => "admin#animes#index",
+          via: [:get, :post], as: :search
+      end
+    end
   end
 end

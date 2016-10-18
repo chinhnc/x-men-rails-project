@@ -1,0 +1,8 @@
+<% provide :title, t("admin.animes.createanime") %>
+<h1><%= t "admin.animes.createanime" %></h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= render "anime_form", anime: @anime, categories: @categories, status: @status %>
+  </div>
+</div>
