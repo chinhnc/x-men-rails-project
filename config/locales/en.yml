@@ -67,6 +67,7 @@ en:
     animes: "Animes"
     new: "Add new anime"
     remove: "Remove this anime"
+    rate: "Rate"
   user:
     edit_profile: "Edit profile"
   addcomment: "Add your comment"

@@ -29,5 +29,5 @@ end
   category_id = Faker::Number.between(1, 10)
   image = File.open(File.join(Rails.root, "/app/assets/images/sao.jpg"))
   Anime.create! title: title, category_id: category_id, description: description,
-  episode: episode, status: status, publish_year: publish_year, image: image
+   episode: episode, status: status, publish_year: publish_year, image: image
 end
