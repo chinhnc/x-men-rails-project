@@ -1,0 +1,58 @@
+<% provide :title, t("admin.reviews.all_reviews") %>
+<h1><%= t "admin.reviews.all_reviews" %></h1>
+
+<%= search_form_for [:admin, @q] do |f| %>
+
+  <%= f.condition_fields do |c| %>
+    <%= render "condition_fields", f: c %>
+  <% end %>
+
+  <div class="form-group">
+    <%= link_to_add_fields_search t("searchs.addconditions"), f, :condition %>
+  </div>
+
+  <div class="form-group">
+    <%= t "searchs.sort_by" %>
+    <%= f.sort_fields do |s| %>
+      <%= s.sort_select %>
+    <% end %>
+  </div>
+
+  <%= f.submit t("searchs.search"), class: "btn btn-primary" %>
+<% end %>
+</br>
+<%= pluralize @reviews.count, t("review") %>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th><%= sort_link @q, :user_id, t("user") %></th>
+      <th><%= sort_link @q, :anime_id, t("anime") %></th>
+      <th><%= sort_link @q, :rate, t("rate") %></th>
+      <th><%= t "title" %></th>
+      <th><%= sort_link @q, :created_at, t("created_at") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @reviews.each do |review| %>
+      <tr>
+        <td class="clickable-row" data-href="<%= admin_review_path review %>">
+          <%= review.user.name %>
+        </td>
+        <td class="clickable-row" data-href="<%= admin_review_path review %>">
+          <%= review.anime.title %>
+        </td>
+        <td class="clickable-row" data-href="<%= admin_review_path review %>">
+          <%= review.rate %>
+        </td>
+        <td class="clickable-row" data-href="<%= admin_review_path review %>">
+          <%= review.title %>
+        </td>
+        <td class="clickable-row" data-href="<%= admin_review_path review %>">
+          <%= review.created_at.strftime t "time_format" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= will_paginate %>

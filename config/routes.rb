@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     password: "secret", confirmation: "verification",
     unlock: "unblock", registration: "register", sign_up: "" }
 
-  resources :users, only: [:show]
+  resources :users, only: :show
   resources :animes, only: [:index, :show]
   resources :reviews
   resources :votes, only: [:create, :destroy]
@@ -25,5 +25,7 @@ Rails.application.routes.draw do
           via: [:get, :post], as: :search
       end
     end
+    resources :reviews, only: [:index, :show, :destroy]
+    resources :comments, only: [:destroy]
   end
 end

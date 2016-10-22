@@ -1,0 +1,12 @@
+<b><%= link_to review.user.name, review.user %></b>
+<p class="text-muted"><%= "Review " %>&#9900;
+  <%= l review.created_at, format: :long %></p>
+<div class="">
+  <%= t "rate" %>
+  <%= review.rate %>
+</div>
+<%= image_tag review.image.url(:medium), alt: "Review image" if review.image.exists? %>
+<blockquote>
+  <h3><%= review.title %></h3>
+  <%= review.content %>
+</blockquote>

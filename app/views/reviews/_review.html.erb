@@ -1,16 +1,5 @@
 <div id="review_<%= review.id %>" class="well well-lg review-hover">
-  <b><%= link_to review.user.name, review.user %></b>
-  <p class="text-muted"><%= "Review " %>&#9900;
-    <%= l review.created_at, format: :long %></p>
-  <div class="">
-    <%= t "rate" %>
-    <%= review.rate %>
-  </div>
-  <%= image_tag review.image.url(:medium), alt: "Review image" if review.image.exists? %>
-  <blockquote>
-    <h3><%= review.title %></h3>
-    <%= review.content %>
-  </blockquote>
+  <%= render "shared/show_review", review: review %>
   <div class="pull-right review-attributes-visible">
     <span class="votes">
       <%= render "reviews/votes", review: review %>
@@ -22,8 +11,7 @@
           <i class="glyphicon glyphicon-edit"></i>&nbsp;
           <%= t "edit" %>
         <% end %>
-        <%= link_to review, method: :delete,
-          data: {confirm: t("confirm")}, remote: true do %>
+        <%= link_to review, method: :delete, data: {confirm: t("confirm")} do %>
           <i class="glyphicon glyphicon-remove"></i>&nbsp;
           <%= t "delete" %>
         <% end %>
