@@ -1,0 +1,24 @@
+<% provide :title, t(".title") %>
+<div class="row col-md-4 col-md-offset-4">
+  <h2><%= t ".title" %></h2>
+
+  <%= form_for([:admin, @user], html: { method: :put }) do |f| %>
+    <%= render "shared/error_messages", object: f.object %>
+
+    <div class="field form-group">
+      <%= f.label :email, t("email") %><br />
+      <%= f.email_field :email, class: "form-control", autofocus: true %>
+    </div>
+
+    <div class="field form-group">
+      <%= f.label :name, t("name") %>
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+
+    <div class="actions form-group">
+      <%= f.submit t("update"), class: "btn btn-primary" %>
+    </div>
+  <% end %>
+
+  <%= link_to t("back"), :back %>
+</div>

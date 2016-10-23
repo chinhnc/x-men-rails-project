@@ -24,9 +24,15 @@ en:
   project_name: "Anime Review Site"
   timetype: "%d-%m-%y %H:%M"
   edit: "Edit"
+  delete: "Delete"
+  created_at: "Created at"
   close: "Close"
+  update: "Update"
   submit: "Submit"
   success: "Success"
+  back: "Back"
+  email: "Email"
+  name: "Name"
   error: "Error"
   review: "Review"
   add_review: "Add review"
@@ -47,7 +53,8 @@ en:
       login: "Log in"
       logout: "Log out"
       profile: "Profile"
-      anime: "Anime"
+      anime: "Animes"
+      user: "Users"
       categories: "Categories"
     footer:
       about: "About"
@@ -94,6 +101,11 @@ en:
       areyousure: "Are you sure?"
       alt: "Anime image"
       animes: "Animes"
+    users:
+      index:
+        title: "Users management"
+      edit:
+        title: "Edit user"
   save: "Save"
   create: "Create"
   addanimes: "Add anime"
@@ -104,3 +116,5 @@ en:
     searchby: "Search by"
     sort: "Sort"
   time_format: "%c"
+  users:
+    name: "Search by email"

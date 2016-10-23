@@ -1,0 +1,17 @@
+<% provide :title, t(".title") %>
+<h1><%= t ".title" %></h1>
+
+<form class="form-inline center">
+  <%= search_form_for [:admin, @q] do |f| %>
+    <div class="form-group">
+      <%= f.label :email_cont, t("users.name") %>
+      <%= f.text_field :email_cont, class: "form-control" %>
+    </div>
+
+    <%= f.submit t("searchs.search"), class: "btn btn-primary" %>
+  <% end %>
+</form>
+
+<div id="all_users">
+  <%= render "all_users" %>
+</div>

@@ -1,0 +1,38 @@
+<% if can? :manage, @users %>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th><%= sort_link @q, :name, t("user.name") %></th>
+        <th><%= sort_link @q, :email, t("email") %></th>
+        <th><%= sort_link @q, :created_at, t("created_at") %></th>
+        <th><%= t "edit" %></th>
+        <th><%= t "delete" %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td class="clickable-row">
+            <%= user.name ? user.name : "NONAME" %>
+          </td>
+          <td class="clickable-row">
+            <%= user.email %>
+          </td>
+          <td class="clickable-row">
+            <%= user.created_at.strftime t "time_format" %>
+          </td>
+          <td>
+            <%= link_to t(:edit), edit_admin_user_path(user),
+              class: "btn btn-primary" %>
+          </td>
+          <td>
+            <%= link_to t(:delete), [:admin, user], method: :delete,
+              remote: true, data: {confirm: t("confirm")},
+              class: "btn btn-danger" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= will_paginate %>
+<% end %>
