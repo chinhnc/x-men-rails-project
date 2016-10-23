@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :comments
 
   namespace :admin do
+    resources :users, only: [:index, :edit, :update, :destroy]
     resources :categories
     resources :animes do
       collection do
