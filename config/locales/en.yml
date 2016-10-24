@@ -106,6 +106,8 @@ en:
         title: "Users management"
       edit:
         title: "Edit user"
+    reviews:
+      all_reviews: "All Reviews"
   save: "Save"
   create: "Create"
   addanimes: "Add anime"

@@ -1,0 +1,50 @@
+<div id="review_<%= @review.id %>" class="well well-lg review-hover">
+  <%= render "shared/show_review", review: @review %>
+  <div class="pull-right review-attributes-visible">
+    <span class="votes">
+      <i class="glyphicon glyphicon-thumbs-up"></i>
+      <%= @review.get_likes.size %>
+      <i class="glyphicon glyphicon-thumbs-down"></i>
+      <%= @review.get_dislikes.size %>
+    </span>
+    <% if can? :manage, @review %>
+      <small>
+        <%= link_to [:admin, @review], method: :delete,
+          data: {confirm: t("confirm")} do %>
+          <i class="glyphicon glyphicon-remove"></i>&nbsp;
+          <%= t "delete" %>
+        <% end %>
+      </small>
+    <% end %>
+  </div>
+</div>
+<div id="comments">
+  <div id="comment_count">
+    <%= pluralize @review.comments.count, t("comments") %>
+  </div>
+  </br>
+  <% if @review.comments.any? %>
+    <% @review.comments.each do |comment| %>
+      <div id="comment_<%= comment.id %>">
+        <div class="well well-sm col-md-10 col-md-offset-2">
+          <%= link_to comment.user.name, comment.user %>
+          <p class="text-muted">
+            <%= l(comment.created_at, format: '%B, %d %Y %H:%M:%S') %>
+          </p>
+          <p><%= comment.content %></p>
+          <div class="pull-right">
+            <% if can? :manage, comment %>
+              <small>
+                <%= link_to [:admin, comment], method: :delete,
+                  data: {confirm: t("confirm")}, remote: true do %>
+                  <i class="glyphicon glyphicon-remove"></i>&nbsp;
+                  <%= t "delete" %>
+                <% end %>
+              </small>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
