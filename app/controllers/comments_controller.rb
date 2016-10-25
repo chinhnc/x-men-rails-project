@@ -3,14 +3,10 @@ class CommentsController < ApplicationController
 
   def create
     @comment = current_user.comments.build comment_params
-    if @comment.save
-      respond_to do |format|
-        format.html {redirect_to root_url}
-        format.js
-      end
-    else
-      flash[:alert] = t :error
-      redirect_to :back
+    @comment.save
+    respond_to do |format|
+      format.html {redirect_to review_path}
+      format.js
     end
   end
 

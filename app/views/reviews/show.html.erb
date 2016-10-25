@@ -2,13 +2,12 @@
 <%= link_to "Back", :back %>
 
 <div class="clearfix"></div></br>
+<div id="error_messages"></div>
 <div id="comments">
   <div id="comment_count">
     <%= pluralize @review.comments.count, t("comments") %>
   </div>
   </br>
-
-  <div id="error_messages"></div>
 
   <div id="comment_<%= @review.id %>">
     <%= render @review.comments, review: @review if @review.comments.any? %>

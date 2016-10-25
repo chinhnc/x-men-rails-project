@@ -17,6 +17,7 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def create
+    @status = Anime.statuses
     if @category.save
       redirect_to admin_category_path(@category)
     else

@@ -4,7 +4,7 @@ class CreateReviews < ActiveRecord::Migration[5.0]
       t.string :title
       t.string :content
       t.attachment :image
-      t.float :rate
+      t.float :rate, default: 0
       t.references :user, index: true, foreign_key: true
       t.references :anime, index: true, foreign_key: true
 

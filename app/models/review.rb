@@ -4,7 +4,11 @@ class Review < ApplicationRecord
 
   acts_as_votable
   
-  validates :rate, numericality: {greater_than_or_equal_to: 0, less_than_or_equal_to: 10}
+  validates :rate, numericality: {greater_than_or_equal_to: 0, less_than_or_equal_to: 5}
+  validates :title, presence: true
+  validates :content, presence: true
+  validates :user_id, presence: true
+  validates :anime_id, presence: true
 
   has_many :comments, dependent: :destroy
   has_many :votes, dependent: :destroy

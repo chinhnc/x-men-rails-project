@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-9 col-md-offset-1">
       <%= f.hidden_field :review_id, value: review.id %>
-      <%= f.text_area :content, rows: 3, placeholder: t(:add_comment),
+      <%= f.text_area :content, rows: 3, placeholder: t(:add_comment), required: true,
         class: "form-control form-margin", id: "comment_content_#{review.id}" %>
     </div>
     <div class="col-md-2">
