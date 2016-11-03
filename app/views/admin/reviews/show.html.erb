@@ -1,12 +1,6 @@
 <div id="review_<%= @review.id %>" class="well well-lg review-hover">
   <%= render "shared/show_review", review: @review %>
   <div class="pull-right review-attributes-visible">
-    <span class="votes">
-      <i class="glyphicon glyphicon-thumbs-up"></i>
-      <%= @review.get_likes.size %>
-      <i class="glyphicon glyphicon-thumbs-down"></i>
-      <%= @review.get_dislikes.size %>
-    </span>
     <% if can? :manage, @review %>
       <small>
         <%= link_to [:admin, @review], method: :delete,
