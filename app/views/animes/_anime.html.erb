@@ -1,4 +1,37 @@
-<%= render "shared/show_anime", anime: anime %>
+<div id="anime-<%= anime.id %>" class="row">
+  <%= image_tag anime.image.url, alt: "Anime image", width: 125, height: 125,
+    class: "pull-left" %>
+  <div class="right">
+    <%= link_to anime.title, anime %>
+  </div>
+  <div class="right">
+    <%= t "anime.rate" %>:
+    <%= anime.reviews.average :rate %>
+  </div>
+  <div class="right">
+    <%= t "anime.category" %>:
+    <%= anime.category.name %>
+  </div>
+  <div class="right">
+    <%= t "anime.publish_year" %>:
+    <%= anime.publish_year %>
+  </div>
+  <div class="right">
+    <%= t "anime.episode" %>:
+    <%= anime.episode %>
+  </div>
+  <div class="right">
+    <%= t "anime.status" %>:
+    <%= anime.status %>
+  </div>
+  <div class="right">
+    <%= t "anime.description" %>:
+    <%= anime.description %>
+  </div>
+  <div id="review_count" class="right">
+    <%= pluralize anime.reviews.count, t("review") %>
+  </div>
+</div>
 <% if user_signed_in? %>
   <section id="review_form">
     <%= render "shared/review_form", anime: anime unless current_user.review_anime?(anime.id).present? %>
