@@ -21,7 +21,7 @@
 
 en:
   hello: "Hello world"
-  project_name: "Anime Review Site"
+  project_name: "ANIMEREVIEWS.GG"
   timetype: "%H:%M:%S %-d %B %Y"
   edit: "Edit"
   delete: "Delete"
@@ -49,7 +49,7 @@ en:
       title: "Home"
   layout:
     header:
-      signup: "Sign up"
+      signup: "Register"
       login: "Log in"
       logout: "Log out"
       profile: "Profile"
