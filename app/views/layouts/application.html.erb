@@ -10,13 +10,30 @@
   </head>
 
   <body>
-    <%= render "layouts/header" %>
-    <div class="container">
-      <div id="flash_error">
-        <%= render "shared/flash_error" %>
+    <% if user_signed_in? && current_user.is_admin? %>
+      <%= render "layouts/admin_header" %>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-2 sidebar">
+            <%= render "layouts/admin_sidebar" %>
+          </div>
+          <div class="col-md-10 col-md-offset-2 main">
+            <div id="flash_error">
+              <%= render "shared/flash_error" %>
+            </div>
+            <%= yield %>
+          </div>
+        </div>
       </div>
-      <%= yield %>
-    </div>
-    <%= render "layouts/footer" %>
+    <% else %>
+      <%= render "layouts/header" %>
+      <div class="container">
+        <div id="flash_error">
+          <%= render "shared/flash_error" %>
+        </div>
+        <%= yield %>
+      </div>
+      <%= render "layouts/footer" %>
+    <% end %>
   </body>
 </html>

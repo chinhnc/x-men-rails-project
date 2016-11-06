@@ -1,0 +1,37 @@
+<nav class="navbar navbar-inverse navbar-fixed-top" data-turbolinks="false">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed"
+        data-toggle="collapse" data-target="#navbar"
+        aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to root_path, class: "navbar-brand" do %>
+        <%= t("project_name") %>
+        <span class="logo-title">You don't have to watch animes that suck. We did it.</span>
+      <% end %>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to t("layout.header.categories"), admin_categories_path %></li>
+        <li><%= link_to t("layout.header.anime"), admin_animes_path %></li>
+        <li><%= link_to t("layout.header.user"), admin_users_path %></li>
+        <li><%= link_to t("layout.header.reviews"), admin_reviews_path %></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+            role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.name ? current_user.name : "NONAME" %>
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><%= link_to t("layout.header.profile"), current_user %></li>
+            <li><%= link_to t("layout.header.logout"),
+              destroy_user_session_path, method: :delete %></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
