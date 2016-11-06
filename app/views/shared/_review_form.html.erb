@@ -16,7 +16,7 @@
         <div class="col-md-4">
           <%= f.label :image %>
           <%= f.file_field :image, onChange: "loadFile(event)" %>
-          <%= image_preview @review %>
+          <%= image_preview @review, @anime.image %>
         </div>
       </div>
     </div>

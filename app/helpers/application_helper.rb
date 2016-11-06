@@ -8,8 +8,8 @@ module ApplicationHelper
     end
   end
 
-  def image_preview object
-    image_tag object.image.exists? ? object.image.url : "sao.jpg",
+  def image_preview object, image
+    image_tag object.image.exists? ? object.image.url : image,
       id: "image_preview", class: "img-responsive", size: "300x300"
   end
 
