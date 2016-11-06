@@ -1,24 +1,22 @@
 <div class="row">
   <div class="">
-    <div class="col-xs-4 col-sm-3">
-      <% if review.image.exists? %>
-        <%= image_tag review.image.url(:medium), alt: "Review image", width: 200,
-          height: 200, class: "pull-left" %>
-      <% else %>
-        <%= image_tag review.anime.image.url(:medium), alt: "Review image", width: 200,
-          height: 200, class: "pull-left" %>
-      <% end %>
+    <div class="col-sm-3">
+      <%= image_tag (review.image.exists? ? review : review.anime).image.url(:medium),
+        alt: "Review image", class: "img-responsive" %>
     </div>
-    <div class="col-xs-4 col-sm-6">
+    <div class="col-sm-6">
       <div class="title">
         <h3><%= review.title %></h3>
       </div>
       <div class="user-name">
-        By <%= link_to review.user.name, review.user %>
+        <h4>By <%= link_to review.user.name, review.user %></h4>
+      </div>
+      <div class="content">
+        <%= review.content %>
       </div>
     </div>
   </div>
-  <div class="col-xs-4 col-sm-3 pull-right">
+  <div class="col-sm-3">
     <div class="">
       <%= review.rate %>
       <%= image_tag "/assets/star-icon-32.png", alt: "Anime image", width: 18, height: 18 %>

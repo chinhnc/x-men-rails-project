@@ -10,7 +10,7 @@
           <%= f.label :title %>
           <%= f.text_field :title, class: "form-control form-margin", required: true %>
           <%= f.label :content %>
-          <%= f.text_area :content, size: "30x10", placeholder: t(:add_review), required: true,
+          <%= f.text_area :content, rows: 3, placeholder: t(:add_review), required: true,
           class: "form-control form-margin", id: "review_content_#{@review.id}" %>
         </div>
         <div class="col-md-4">

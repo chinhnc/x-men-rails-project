@@ -1,6 +1,6 @@
-<div id="anime-<%= anime.id %>" class="row anime">
+<div id="anime-<%= anime.id %>" class="anime">
   <div class="each-anime">
-    <%= image_tag anime.image.url, alt: "Anime image", width: 125, height: 125,
+    <%= image_tag anime.image.url, alt: "Anime image", width: 150,
       class: "pull-left" %>
     <div class="right">
       <%= link_to anime.title, anime %>
@@ -18,7 +18,7 @@
       <%= anime.description %>
     </div>
     <div id="review_count" class="right">
-      <%= pluralize anime.reviews.count, t("review") %>
+      <%= pluralize anime.reviews.count, t("review.review") %>
     </div>
   </div>
 </div>

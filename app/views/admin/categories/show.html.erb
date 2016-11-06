@@ -1,7 +1,7 @@
 <% provide :title, @category.name %>
 <div class="center">
   <h1><%= @category.name %></h1>
-  <%= pluralize @category.animes.count, t("admin.categories.animes") %>
+  <%= pluralize @category.animes.count, t("admin.animes.anime") %>
 </div>
 
 <ul class="animes">

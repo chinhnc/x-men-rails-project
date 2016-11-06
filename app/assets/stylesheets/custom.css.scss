@@ -144,62 +144,44 @@ footer ul li {
 
 /*comment*/
 
-.each-comment {
-  padding: 10px 10px 20px 10px;
-  border: 1px solid;
+.comment {
+  position: relative;
+  padding: 10px;
+  border: 1px solid lightgrey;
   border-radius: 5px;
-  margin: 15px 0px 15px 80px;
+  margin-top: 15px;
+}
+
+.comment:hover .attributes-visible {
+  display: block;
 }
 
 .comment-form {
-  margin: 15px 0px 15px 80px;
+  margin-top: 15px;
 }
 
 /* reviews */
 
 .review {
-  border:2px solid;
+  position: relative;
+  border:2px solid grey;
   border-radius: 5px;
   padding: 10px 10px;
-  margin: 40px 15px 0px 15px;
+  margin-top: 20px;
 }
 
-.review-attributes-visible {
+.attributes-visible {
   display: none;
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
 }
 
-.review-hover:hover .review-attributes-visible {
+.review:hover .attributes-visible {
   display: block;
 }
 
-.title {
-  font-family: serif;
-  font-weight: bold;
-  font-size: 200%;
-  text-transform: uppercase;
-  color: #9f3a3a;
-  padding: 10px 10px;
-}
-
-.user-name {
-  font-style: oblique;
-  font-size: 120%;
-}
-
-.content {
-  font-family: 14px/24px Helvetica, Sans-Serif;
-  font-size: 100%;
-  text-indent: 50px;
-  margin: 20px 20px;
-}
-
-.buttom {
-  font-family: 14px/24px Helvetica, Sans-Serif;
-  font-size: 100%;
-  margin: 20px 20px;
-}
-
-.votes-buttom {
+.votes-button {
   -moz-box-shadow: 0px 1px 0px 0px #fce2c1;
   -webkit-box-shadow: 0px 1px 0px 0px #fce2c1;
   box-shadow: 0px 1px 0px 0px #fce2c1;
@@ -225,7 +207,7 @@ footer ul li {
   text-decoration:none;
   text-shadow:0px -1px 0px #cc9f52;
 }
-.votes-buttom:hover {
+.votes-button:hover {
   background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #fb9e25), color-stop(1, #ffc477));
   background:-moz-linear-gradient(top, #fb9e25 5%, #ffc477 100%);
   background:-webkit-linear-gradient(top, #fb9e25 5%, #ffc477 100%);
@@ -235,19 +217,13 @@ footer ul li {
   filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fb9e25', endColorstr='#ffc477',GradientType=0);
   background-color:#fb9e25;
 }
-.votes-buttom:active {
+.votes-button:active {
   position:relative;
   top:1px;
   background-color:#fb9e25;
 }
 
 /* anime */
-
-.anime-show {
-  padding: 20px 20px;
-  margin: 0px 5px 30px 15px;
-}
-
 .description {
   font-family: 14px/24px Helvetica, Sans-Serif;
   font-size: 100%;
@@ -265,17 +241,18 @@ footer ul li {
 }
 
 .right {
-  margin-left: 12%;
+  margin-left: 160px;
 }
 
 .anime {
-  margin: 0px 5px 30px 15px;
+  margin-top: 15px;
 }
 
 .each-anime {
-  padding: 15px 15px 40px 15px;
+  padding: 10px;
   border: 1px solid;
   border-radius: 5px;
+  overflow: auto;
 }
 
 .left {
@@ -286,12 +263,14 @@ footer ul li {
 
 .activity-item {
   background-color: rgba(0,0,0,.2);
-  margin: 15px 15px;
+  margin: 15px;
   border-radius: 5px;
 }
 
 .user-info {
-  font-size:large;
-  font-weight:bold;
-  margin: 30px 10px;
+  font-size: large;
+}
+
+.btn-margin-top {
+  margin-top: 10px;
 }
