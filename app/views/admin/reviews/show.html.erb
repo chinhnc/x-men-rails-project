@@ -14,7 +14,7 @@
 </div>
 <div id="comments">
   <div id="comment_count">
-    <%= pluralize @review.comments.count, t("comments") %>
+    <%= pluralize @review.comments.count, t("comment.comment") %>
   </div>
   </br>
   <% if @review.comments.any? %>

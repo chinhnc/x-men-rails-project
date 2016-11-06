@@ -3,8 +3,7 @@
   <%= f.text_area :content, rows: 3, placeholder: t(:add_comment), required: true,
     class: "form-control form-margin", id: "comment_content_#{review.id}" %>
   </br>
-  <div class="buttom center">
-  <%= f.submit t(:submit), class: "btn btn-primary" %>
-  <%= link_to "Back", :back %>
+  <div class="pull-right">
+    <%= f.submit t(:submit), class: "btn btn-primary" %>
   </div>
 <% end %>

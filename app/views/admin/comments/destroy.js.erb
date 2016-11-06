@@ -1,3 +1,3 @@
-$("#comment_count").html("<%= pluralize @comment.review.comments.count, t("comments") %>");
+$("#comment_count").html("<%= pluralize @comment.review.comments.count, t("comment.comment") %>");
 $("#error_messages").html("");
 $("#comment_<%= @comment.id %>").remove();

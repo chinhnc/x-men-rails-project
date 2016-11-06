@@ -66,7 +66,7 @@ en:
     comment:
       create: "added a comment to"
   anime:
-    anime: "Anime :"
+    anime: "Anime"
     category: "Category"
     episode: "Episode"
     status: "Status"
@@ -81,8 +81,17 @@ en:
       other: "by %{count} people"
     }
     newreview: "New Review"
+  review:
+    review: "Review"
+    count_helpful: {
+      one: "%{count} person found this review helpful",
+      other: "%{count} people found this review helpful"
+    }
   user:
     edit_profile: "Edit profile"
+    user_profile: "%{username}'s Profile"
+  comment:
+    comment: "comment"
   confirm: "Are you sure?"
   destroysuccess: "Review deleted!"
   comments: "Comments"
@@ -98,7 +107,6 @@ en:
       areyousure: "Are you sure?"
       editcategory: "Edit Category"
       createcategory: "Create Category"
-      animes: "animes"
     animes:
       allanime: "All Anime"
       newanime: "New Anime"
@@ -106,7 +114,7 @@ en:
       editanime: "Edit Anime"
       areyousure: "Are you sure?"
       alt: "Anime image"
-      animes: "Animes"
+      anime: "Anime"
     users:
       index:
         title: "Users management"
@@ -126,4 +134,3 @@ en:
   time_format: "%c"
   users:
     name: "Search by email"
-  helpful: "people found this review helpful"

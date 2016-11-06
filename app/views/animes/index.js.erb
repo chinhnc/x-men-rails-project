@@ -1,2 +1,2 @@
-$("#results_count").html("<%= pluralize @animes.count, t("anime.animes") %>");
+$("#results_count").html("<%= pluralize @animes.count, t("anime.anime") %>");
 $("#results").html("<%= j render "animes/animes", animes: @animes %>");
