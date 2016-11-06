@@ -5,8 +5,9 @@
     <%= link_to anime.title, anime %>
   </div>
   <div class="right">
-    <%= t "anime.rate" %>:
+    <%= t "anime.rating" %>:
     <%= anime.reviews.average :rate %>
+    <%= I18n.translate "anime.count_rater", count: anime.reviews.count %>
   </div>
   <div class="right">
     <%= t "anime.category" %>:

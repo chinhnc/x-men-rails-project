@@ -74,7 +74,11 @@ en:
     animes: "Animes"
     new: "Add new anime"
     remove: "Remove this anime"
-    rate: "Rate"
+    rating: "Rating"
+    count_rater: {
+      one: "by %{count} person",
+      other: "by %{count} people"
+    }
   user:
     edit_profile: "Edit profile"
   confirm: "Are you sure?"

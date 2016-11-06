@@ -41,6 +41,26 @@ a:hover {
   }
 }
 
+.navbar {
+  background: linear-gradient(#aa80ff, #ddccff);
+  border: none;
+}
+
+nav a {
+  color: black;
+}
+
+.logo-title {
+  color: #000;
+  font-size: 12px;
+  position: absolute;
+  bottom: 0;
+}
+
+.signup-btn, .login-btn {
+  padding: 1px !important;
+}
+
 /* footer */
 
 .footer {
@@ -91,17 +111,6 @@ footer ul li {
 
 .right {
   margin-left: 12%;
-}
-
-.logo-title {
-  color: #fff;
-  font-size: 12px;
-  position: absolute;
-  bottom: 0;
-}
-
-.signup-btn, .login-btn {
-  padding: 1px !important;
 }
 
 .anime {
