@@ -42,10 +42,15 @@
       </div>
     </div>
   </div>
-  <% if user_signed_in? %>
-    <section id="review_form">
-      <%= render "shared/review_form", anime: anime unless current_user.review_anime?(anime.id).present? %>
-    </section>
+  <% unless current_user.review_anime?(anime.id).present? %>
+    <button data-toggle="collapse" data-target="#review_form" class="btn btn-default buttom">
+      <%= t "anime.newreview" %>
+    </button>
+    <div id="review_form" class="collapse buttom">
+      <section>
+        <%= render "shared/review_form", anime: anime %>
+      </section>
+    </div>
   <% end %>
     <div id="reviews_<%= anime.id %>">
       <%= render @reviews, anime: anime if anime.reviews.any? %>

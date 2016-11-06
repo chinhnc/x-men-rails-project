@@ -3,7 +3,7 @@ class Review < ApplicationRecord
   tracked only: :create, owner: ->(controller, model) {controller.current_user}
 
   acts_as_votable
-  
+
   validates :rate, numericality: {greater_than_or_equal_to: 0, less_than_or_equal_to: 5}
   validates :title, presence: true
   validates :content, presence: true

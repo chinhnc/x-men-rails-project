@@ -80,6 +80,7 @@ en:
       one: "by %{count} person",
       other: "by %{count} people"
     }
+    newreview: "New Review"
   user:
     edit_profile: "Edit profile"
   confirm: "Are you sure?"
