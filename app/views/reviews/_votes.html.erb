@@ -1,8 +1,9 @@
-<%= link_to votes_path(review_id: review.id), method: :post, remote: true do %>
-  <i class="glyphicon glyphicon-thumbs-up"></i>
-<% end %>
 <%= review.get_likes.size %>
-<%= link_to vote_path(id: review.id), method: :delete, remote: true do %>
-  <i class="glyphicon glyphicon-thumbs-down"></i>
+<%= t "helpful" %></br>
+
+<%= link_to votes_path(review_id: review.id), method: :post, remote: true do %>
+  <i class="votes-buttom">Helpful</i>
 <% end %>
-<%= review.get_dislikes.size %>
+<%= link_to vote_path(id: review.id), method: :delete, remote: true do %>
+  <i class="votes-buttom">Not Helpful</i>
+<% end %>

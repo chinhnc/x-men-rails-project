@@ -66,6 +66,7 @@ en:
     comment:
       create: "added a comment to"
   anime:
+    anime: "Anime :"
     category: "Category"
     episode: "Episode"
     status: "Status"
@@ -124,3 +125,4 @@ en:
   time_format: "%c"
   users:
     name: "Search by email"
+  helpful: "people found this review helpful"

@@ -67,11 +67,11 @@ ActiveRecord::Schema.define(version: 20161016102930) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
-    t.float    "rate"
+    t.float    "rate",               default: 0.0
     t.integer  "user_id"
     t.integer  "anime_id"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
     t.integer  "cached_votes_up",    default: 0
     t.integer  "cached_votes_down",  default: 0
     t.integer  "cached_votes_score", default: 0

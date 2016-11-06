@@ -6,11 +6,11 @@
         <div class="col-md-8">
           <%= f.label :rate %>
           <%= f.number_field :rate, id: "rate",
-            class: "form-control form-margin", required: true, within: 1..5 %>
+            class: "form-control form-margin", required: true, within: 1..5, value: @review.rate %>
           <%= f.label :title %>
           <%= f.text_field :title, class: "form-control form-margin", required: true %>
           <%= f.label :content %>
-          <%= f.text_area :content, rows: 4, placeholder: t(:add_review), required: true,
+          <%= f.text_area :content, size: "30x10", placeholder: t(:add_review), required: true,
           class: "form-control form-margin", id: "review_content_#{@review.id}" %>
         </div>
         <div class="col-md-4">
@@ -19,9 +19,10 @@
           <%= image_preview @review %>
         </div>
       </div>
-      <div class="col-md-2">
-        <%= f.submit t("submit"), class: "btn btn-primary" %>
-      </div>
+    </div>
+    </br>
+    <div class="center">
+      <%= f.submit t("submit"), class: "btn btn-primary" %>
     </div>
   <% end %>
 </div>

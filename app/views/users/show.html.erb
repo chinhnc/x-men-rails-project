@@ -1,22 +1,24 @@
 <% provide :title, current_user.name %>
-<h1><%= current_user.name %></h1>
 
 <div class="row">
-  <div class="col-md-3">
-    <h3>Information</h3>
-    <div class="">
+  <div>
+    <div class="user-info">
+      <%= "User:" %>
       <%= current_user.name %><br/>
-      <%= current_user.email %><br/>
+    </div>
+    <div class="user-info">
       <%= "Review:" %>
       <%= current_user.reviews.count %><br/>
+    </div>
+    <div class="user-info">
       <%= "Helpful rating:" %>
       <%= (current_user.reviews.map {|review| review.get_likes.size}).inject(0, :+) %>
     </div>
     <%= link_to t("edit_profile"), edit_user_registration_path,
       class: "btn btn-default" %>
   </div>
-  <div class="col-md-9">
-    <h3>Activities</h3>
+  <div>
+    <h3><b>Recent activities : </b></h3>
     <%= render "shared/activities" %>
   </div>
 </div>
