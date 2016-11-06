@@ -9,11 +9,8 @@ class Anime < ApplicationRecord
   validates :episode, presence: true
   validates :image, presence: true
   validates :publish_year, presence: true,
-    inclusion: { 
-      in: 1000..Date.today.year, 
-      message: ">= 1000 and <= current year" },
-    format: { 
-      with: /(10|20)\d{2}/i, 
+    format: {
+      with: /(10|20)\d{2}/i,
       message: "should be a four-digit year"
     }
   validates :category_id, presence: true

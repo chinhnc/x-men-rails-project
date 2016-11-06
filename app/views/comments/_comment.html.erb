@@ -1,5 +1,5 @@
 <div id="comment_<%= comment.id %>">
-  <div class="well well-sm col-md-11 col-md-offset-1">
+  <div class="each-comment">
     <strong><%= link_to comment.user.name, comment.user %></strong><br/>
     <small class="text-muted"><%= "Comment " %>&#9900;
       <%= comment.created_at.strftime t :timetype %></small>
@@ -19,6 +19,6 @@
           <% end %>
         </small>
       <% end %>
-    </div>
+    </div></br>
   </div>
 </div>
