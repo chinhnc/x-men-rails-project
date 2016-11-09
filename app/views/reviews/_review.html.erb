@@ -17,8 +17,8 @@
   </div>
   <div class="btn-margin-top">
     <% if current_page? anime_path %>
-      <%= link_to t("add_comment"), review_path(review),
-        class: "btn btn-primary btn-sm" %>
+      <%= link_to(t("add_comment"), review_path(review),
+        class: "btn btn-primary btn-sm") if user_signed_in? %>
       <% if review.comments.count > 0 %>
         <%= link_to t("show_comments", number_of_comments: review.comments.count), review %>
       <% end %>

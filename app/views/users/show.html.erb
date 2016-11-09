@@ -1,19 +1,19 @@
-<% provide :title, current_user.name %>
-<h1 class="page-header"><%= t "user.user_profile", username: current_user.name %></h1>
+<% provide :title, @user.name %>
+<h1 class="page-header"><%= t "user.user_profile", username: @user.name %></h1>
 
 <div class="user-info">
   <%= "Email: " %>
-  <%= current_user.email %><br/>
+  <%= @user.email %><br/>
 </div>
 <div class="user-info">
   <%= "Review: " %>
-  <%= current_user.reviews.count %><br/>
+  <%= @user.reviews.count %><br/>
 </div>
 <div class="user-info">
   <%= "Helpful rating: " %>
-  <%= (current_user.reviews.map {|review| review.get_likes.size}).inject(0, :+) %>
+  <%= (@user.reviews.map {|review| review.get_likes.size}).inject(0, :+) %>
 </div>
 <%= link_to t("edit_profile"), edit_user_registration_path,
-  class: "btn btn-default btn-margin-top" %>
+  class: "btn btn-default btn-margin-top" if current_user == @user %>
 <h3><b><%= "Recent activities:" %></b></h3>
 <%= render "shared/activities" %>

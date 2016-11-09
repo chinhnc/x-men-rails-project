@@ -3,7 +3,7 @@ class Admin::UsersController < ApplicationController
 
   def index
     @q = @users.ransack params[:q]
-    @users = @q.result.order(created_at: :desc).paginate page: params[:page]
+    @users = @q.result.where(is_admin: false).order(created_at: :desc).paginate page: params[:page]
     @q.build_sort if @q.sorts.empty?
   end
 
