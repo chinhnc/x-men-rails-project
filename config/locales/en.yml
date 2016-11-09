@@ -22,7 +22,8 @@
 en:
   hello: "Hello world"
   project_name: "ANIMEREVIEWS.GG"
-  timetype: "%H:%M:%S %-d %B %Y"
+  time_format: "%X %x"
+  time_format_user: "%A, %B %-d, %Y at %l:%M%P"
   edit: "Edit"
   delete: "Delete"
   created_at: "Created at"
@@ -62,9 +63,9 @@ en:
       contact: "Contact"
   activity:
     review:
-      create: "reviewed on"
+      create: "added a"
     comment:
-      create: "added a comment to"
+      create: "added a comment to a"
   anime:
     anime: "Anime"
     category: "Category"
@@ -131,6 +132,5 @@ en:
     sortby: "Sort by"
     searchby: "Search by"
     sort: "Sort"
-  time_format: "%c"
   users:
     name: "Search by email"

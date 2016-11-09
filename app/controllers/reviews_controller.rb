@@ -16,7 +16,7 @@ class ReviewsController < ApplicationController
   def update
     @review.update_attributes review_params
     respond_to do |format|
-      format.html {redirect_to @review.anime}
+      format.html {redirect_to @review}
       format.js
     end
   end

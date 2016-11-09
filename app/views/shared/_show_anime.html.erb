@@ -1,25 +1,26 @@
-<div id="anime-<%= anime.id %>" class="anime">
-  <div class="each-anime">
-    <%= image_tag anime.image.url, alt: "Anime image", width: 150,
-      class: "pull-left" %>
-    <div class="right">
+<div id="anime-<%= anime.id %>" class="media each-anime">
+  <div class="media-left media-middle">
+    <%= image_tag anime.image.url, alt: "Anime image",
+      class: "img-responsive media-object each-anime-img" %>
+  </div>
+  <div class="media-body">
+    <h4 class="media-heading">
       <%= link_to anime.title, anime %>
-      <span style="margin-left: 50px; font-size: 16px;">
-        <%= anime.reviews.average(:rate) ? anime.reviews.average(:rate) : 0 %>
-        <%= image_tag "/assets/star-icon-32.png", alt: "Anime image", width: 25, height: 25 %>
-      </span>
-    </div>
-    <div class="right">
-      <%= t "anime.category" %>:
-      <%= anime.category.name %>
-    </div>
-    <div class="right">
-      <%= t "anime.description" %>:
-      <%= anime.description %>
-    </div>
-    <div id="review_count" class="right">
+    </h4>
+    <span class="label label-info"><%= anime.category.name %></span>
+    <p><%= t "anime.description" %>:
+    <%= truncate(anime.description, length: 200, separator: " ",
+      omission: "... ") {link_to "[Continue]", anime_path(anime)} %></p>
+    <div id="review_count">
       <% reviews = anime.reviews %>
-      <%= pluralize reviews.count, t("review.review") %><%= reviews.last ? " ( last review at: #{reviews.last.created_at.strftime("%d-%m-%Y")} )" : "" %>
+      <%= pluralize @review_count[anime.id] ||= 0, t("review.review") %><%= reviews.last ? "
+        (last review: #{reviews.last.created_at.strftime(t :time_format_user)})" : "" %>
     </div>
+  </div>
+  <div class="media-right media-middle each-anime-rating center">
+    <h3>
+      <%= @review_rating[anime.id] ||= 0 %>/5
+      <%= image_tag "/assets/star-icon-32.png", alt: "Anime image", width: 30, height: 30 %>
+    </h3>
   </div>
 </div>
