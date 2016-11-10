@@ -1,1 +1,1 @@
-$('#review_<%= @review.id %> .votes').html('<%= j render "reviews/votes", review: @review %>');
+$('#review_<%= @review.id %> .review-header').html('<%= j render "shared/review_vote_info", review: @review %>');

@@ -50,7 +50,7 @@ en:
       title: "Home"
   layout:
     header:
-      signup: "Register"
+      signup: "Sign up"
       login: "Log in"
       logout: "Log out"
       profile: "Profile"
@@ -81,9 +81,19 @@ en:
       one: "by %{count} person",
       other: "by %{count} people"
     }
-    newreview: "New Review"
   review:
     review: "Review"
+    new_review: "New Review"
+    most_helpful_review: "MOST HELPFUL REVIEWS"
+    recently_posted: "RECENTLY POSTED"
+    new_review_not_signed_in: "Want to add a review?"
+    review_vote: "Was this review helpful?"
+    review_vote_shortly: "Helpful?"
+    people_found_helpful: "%{vote_helpful} of %{total_vote} (%{percentage}) found this review helpful"
+    review_no_vote: "No ratings yet"
+    review_posted: "POSTED: %{at}"
+    yes: "Yes"
+    no: "No"
     count_helpful: {
       one: "%{count} person found this review helpful",
       other: "%{count} people found this review helpful"
@@ -97,7 +107,6 @@ en:
   destroysuccess: "Review deleted!"
   comments: "Comments"
   add_comment: "Add a comment"
-  show_comments: "All %{number_of_comments} comments"
   commentupdated: "Comment updated!"
   search: "Search for anime names!"
   searchanime: "Search anime"

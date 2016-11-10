@@ -1,26 +1,23 @@
 <%= form_for @review, html: {multipart: true} do |f| %>
   <div class="row">
-    <div class="col-md-10">
-      <%= f.hidden_field :anime_id, value: anime.id %>
-      <div class="col-md-8">
-        <%= f.label :rate %>
-        <%= f.number_field :rate, id: "rate",
-          class: "form-control form-margin", required: true, within: 1..5, value: @review.rate %>
-        <%= f.label :title %>
-        <%= f.text_field :title, class: "form-control form-margin", required: true %>
-        <%= f.label :content %>
-        <%= f.text_area :content, rows: 3, placeholder: t(:add_review), required: true,
-        class: "form-control form-margin", id: "review_content_#{@review.id}" %>
-      </div>
-      <div class="col-md-4">
-        <%= f.label :image %>
-        <%= f.file_field :image, onChange: "loadFile(event)" %>
-        <%= image_preview @review, anime.image %>
+    <%= f.hidden_field :anime_id, value: anime.id %>
+    <div class="col-md-8">
+      <%= f.label :rate %>
+      <%= f.number_field :rate, id: "rate",
+        class: "form-control form-margin", required: true, within: 1..5, value: @review.rate %>
+      <%= f.label :title %>
+      <%= f.text_field :title, class: "form-control form-margin", required: true %>
+      <%= f.label :content %>
+      <%= f.text_area :content, rows: 3, placeholder: t(:add_review), required: true,
+      class: "form-control form-margin", id: "review_content_#{@review.id}" %>
+      <div class="pull-right margin-top margin-bottom">
+        <%= f.submit t("submit"), class: "btn btn-primary" %>
       </div>
     </div>
-  </div>
-  </br>
-  <div class="center">
-    <%= f.submit t("submit"), class: "btn btn-primary" %>
+    <div class="col-md-4">
+      <%= f.label :image %>
+      <%= f.file_field :image, onChange: "loadFile(event)" %>
+      <%= image_preview @review, anime.image %>
+    </div>
   </div>
 <% end %>

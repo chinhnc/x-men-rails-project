@@ -9,8 +9,8 @@ html {
 }
 
 body {
-  padding-top: 60px;
-  padding-bottom: 15px;
+  padding-top: 80px;
+  padding-bottom: 20px;
   margin-bottom: 40px;
   font-family: "Comic Sans MS", cursive, sans-serif;
 }
@@ -29,6 +29,18 @@ a:hover {
 
 .pull-right {
   float: right;
+}
+
+.btn {
+  border-radius: 0;
+}
+
+.margin-top {
+  margin-top: 5px;
+}
+
+.margin-bottom {
+  margin-bottom: 5px;
 }
 
 /* header */
@@ -54,8 +66,6 @@ a:hover {
 
 .logo-title {
   font-size: 12px;
-  position: absolute;
-  bottom: 0;
 }
 
 .signup-btn, .login-btn {
@@ -86,7 +96,6 @@ footer ul li {
   float: left;
   margin-left: 15px;
 }
-
 
 /* Sidebar */
 
@@ -142,13 +151,12 @@ footer ul li {
   margin-top: 0;
 }
 
-/*comment*/
+/* comment */
 
 .comment {
   position: relative;
   padding: 10px;
   border: 1px solid lightgrey;
-  border-radius: 5px;
   margin-top: 15px;
 }
 
@@ -160,25 +168,80 @@ footer ul li {
   margin-top: 15px;
 }
 
-/* reviews */
+/* review */
 
-.review {
+.review-header {
+  padding: 5px;
+  border: 1px solid grey;
+  margin-bottom: 1px;
+}
+
+.review-body {
   position: relative;
-  border:2px solid grey;
-  border-radius: 5px;
-  padding: 10px 10px;
-  margin-top: 20px;
+  border: 1px solid grey;
+  padding: 5px;
+  margin-bottom: 30px;
+}
+
+.review-user-info {
+  width: 25%;
+  float: left;
+}
+
+.add-comment {
+  position: absolute;
+  bottom: 5px;
+}
+
+.review-content {
+  width:75%;
+  margin-left: 25%;
+}
+
+.review-rate {
+  float: left;
+  color: white;
+  background-color: royalblue;
+  font-size: 200%;
+  height: 50px;
+  width: 50px;
+  padding: 5px;
+}
+
+.review-title {
+  font-size: 120%;
+  background-color: lightsteelblue;
+  height: 50px;
+  word-wrap: break-word;
+  overflow: auto;
+  padding-left: 5px;
 }
 
 .attributes-visible {
   display: none;
   position: absolute;
-  bottom: 10px;
-  right: 20px;
+  padding: 0 5px;
+  border: 1px solid grey;
+  border-top: white;
+  right: -1px;
+  bottom: -21px;
+  background-color: white;
 }
 
 .review:hover .attributes-visible {
   display: block;
+}
+
+.review-small {
+  position: relative;
+  border: 1px solid grey;
+  padding: 5px;
+  margin-bottom: 30px;
+}
+
+.review-footer {
+  padding-top: 5px;
+  border-top: 1px solid lightgrey;
 }
 
 .votes-button {
@@ -193,18 +256,11 @@ footer ul li {
   background:linear-gradient(to bottom, #ffc477 5%, #fb9e25 100%);
   filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffc477', endColorstr='#fb9e25',GradientType=0);
   background-color:#ffc477;
-  -moz-border-radius:6px;
-  -webkit-border-radius:6px;
-  border-radius:6px;
-  border:1px solid #eeb44f;
   display:inline-block;
   cursor:pointer;
   color:#ffffff;
-  font-family:Arial;
-  font-size:15px;
   font-weight:bold;
-  padding:6px 24px;
-  text-decoration:none;
+  padding: 3px 10px;
   text-shadow:0px -1px 0px #cc9f52;
 }
 .votes-button:hover {
@@ -224,6 +280,7 @@ footer ul li {
 }
 
 /* anime */
+
 .description {
   font-family: 14px/24px Helvetica, Sans-Serif;
   font-size: 100%;
@@ -232,12 +289,6 @@ footer ul li {
 
 .new-review {
   margin: 20px 20px;
-}
-/* search */
-
-.chardin_box {
-  display: inline-block;
-  padding: 0 3px;
 }
 
 .each-anime-img {
@@ -261,18 +312,50 @@ footer ul li {
   overflow: auto;
 }
 
+/* search */
+
+.chardin_box {
+  display: inline-block;
+  padding: 0 3px;
+}
+
 /* profile */
 
 .activity-item {
   background-color: rgba(0,0,0,.2);
-  margin: 15px;
-  border-radius: 5px;
+  margin: 5px 20px;
 }
 
 .user-info {
   font-size: large;
 }
 
-.btn-margin-top {
-  margin-top: 10px;
+/* others */
+
+.fancy {
+  line-height: 0.5;
+  text-align: center;
+  margin: 30px 0;
+}
+.fancy span {
+  display: inline-block;
+  position: relative;
+}
+.fancy span:before,
+.fancy span:after {
+  content: "";
+  position: absolute;
+  height: 5px;
+  border-bottom: 1px solid lightgrey;
+  border-top: 1px solid lightgrey;
+  top: 0;
+  width: 200px;
+}
+.fancy span:before {
+  right: 100%;
+  margin-right: 15px;
+}
+.fancy span:after {
+  left: 100%;
+  margin-left: 15px;
 }

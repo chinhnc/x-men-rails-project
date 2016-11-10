@@ -15,7 +15,7 @@
 </div>
 <% if can? :manage, @user %>
   <%= link_to t("edit_profile"), edit_user_registration_path,
-    class: "btn btn-default btn-margin-top" %>
+    class: "btn btn-default margin-top" %>
 <% end %>
 <h3><b><%= "Recent activities:" %></b></h3>
 <%= render "shared/activities" %>
