@@ -1,21 +1,26 @@
 <%= form_for_filterrific @filterrific do |f| %>
-  <div class="form-group">
-    <%= label_tag t("searchanime") %>
-    <%= f.text_field :with_title, placeholder: t(:search),
-      class: "filterrific-periodically-observed form-control" %>
-  </div>
-<% end %>
-<% if params[:filterrific] %>
-  <div class="well well-sm">
-    <div id="results_count" class="chardin_box">
-      <%= pluralize @animes.count, t("anime.anime") %>
+  <div class="col-md-4">
+    <div class="form-group">
+      <%= label_tag t("searchanime") %>
+      <%= f.text_field :search_query, placeholder: t(:search),
+        class: "filterrific-periodically-observed form-control" %>
     </div>
-    <%= render_filterrific_spinner %>
   </div>
-  <div id="results" class="row">
-    <%= render "animes/animes", animes: @animes %>
+  <div class="col-md-4">
+    <div class="form-group">
+      <%= label_tag :category %>
+      <%= f.select :with_category_id, @filterrific.select_options[:with_category_id],
+        {include_blank: "- Any -"}, {class: "form-control"} %>
+    </div>
   </div>
-<% else %>
-  <%= render "shared/activities" %>
+  <div class="col-md-4">
+    <div class="form-group">
+      <%= label_tag :sorted_by %>
+      <%= f.select :sorted_by, @filterrific.select_options[:sorted_by],
+        {}, {class: "form-control"} %>
+    </div>
+  </div>
 <% end %>
-
+<div id="filterrific_results">
+  <%= render "animes/animes", animes: @animes %>
+</div>

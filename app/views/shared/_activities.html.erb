@@ -9,6 +9,7 @@
           <strong><%= link_to activity.owner.name, activity.owner if activity.owner %></strong>
           <%= render_activity activity, display: :i18n %>
           <% if activity.trackable_type == "Review" %>
+            <%= link_to "review", activity.trackable %> to
             "<%= link_to activity.trackable.anime.title, activity.trackable.anime %>"
           <% elsif activity.trackable_type == "Comment" %>
             <%= link_to "review", activity.trackable.review %> of

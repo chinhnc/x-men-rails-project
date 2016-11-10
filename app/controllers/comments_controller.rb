@@ -18,9 +18,6 @@ class CommentsController < ApplicationController
     end
   end
 
-  def edit
-  end
-
   def update
     if @comment.update_attributes comment_params
       flash[:success] = t :commentupdated

@@ -6,15 +6,15 @@
       </div>
       <div class="col-sm-9">
         <h2><%= link_to anime.title, anime %></h2>
-        <strong>
-        <%= t "anime.rating" %>:
-        <span style="font-size: 20px;"><%= anime.reviews.average(:rate) ? anime.reviews.average(:rate) : 0 %></span>
-        <%= image_tag "/assets/star-icon-32.png", alt: "Anime image", width: 30, height: 30 %>
-        <%= I18n.translate "anime.count_rater", count: anime.reviews.count %>
+        <p class="lead">
+          <%= t "anime.rating" %>:
+          <%= anime.reviews.average(:rate) ? anime.reviews.average(:rate) : 0 %>
+          <%= image_tag "/assets/star-icon-32.png", alt: "Anime image", width: 30, height: 30 %>
+          <%= I18n.translate "anime.count_rater", count: anime.reviews.count %>
+        </p>
         <div id="review_count">
           <%= pluralize anime.reviews.count, t("review.review") %>
         </div>
-        </strong>
       </div>
     </div>
     <div class="row">
@@ -44,10 +44,10 @@
   </div>
   <% if user_signed_in? %>
     <% unless current_user.review_anime?(anime.id).present? %>
-      <button data-toggle="collapse" data-target="#review_form" class="btn btn-default button">
+      <button data-toggle="collapse" data-target="#review_form" class="btn btn-default">
         <%= t "anime.newreview" %>
       </button>
-      <div id="review_form" class="collapse button">
+      <div id="review_form" class="collapse">
         <section>
           <%= render "shared/review_form", anime: anime %>
         </section>

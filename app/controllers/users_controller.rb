@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
+  load_and_authorize_resource
+
   def show
-    @user = User.find_by_id params[:id]
     @activities = PublicActivity::Activity.order("created_at DESC").where owner_id: params[:id]
   end
 end

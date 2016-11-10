@@ -1,2 +1,5 @@
-$("#results_count").html("<%= pluralize @animes.count, t("anime.anime") %>");
 $("#results").html("<%= j render "animes/animes", animes: @animes %>");
+<% js = escape_javascript(
+  render(partial: 'animes/animes', locals: {animes: @animes})
+) %>
+$("#filterrific_results").html("<%= js %>");

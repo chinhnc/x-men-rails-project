@@ -1,6 +1,6 @@
 <div id="comment_<%= comment.id %>" class="comment">
   <strong><%= link_to comment.user.name, comment.user %></strong>
-  <small class="text-muted"> &#9900;<%= comment.created_at.strftime t :timetype %></small>
+  <small class="text-muted"> &#9900;<%= comment.created_at.strftime t :time_format_user %></small>
   <p><%= comment.content %></p>
   <div class="pull-right attributes-visible">
     <% if can? :manage, comment %>
