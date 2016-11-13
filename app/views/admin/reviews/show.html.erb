@@ -1,17 +1,4 @@
-<div id="review_<%= @review.id %>" class="well well-lg review-hover">
-  <%= render "shared/show_review", review: @review %>
-  <div class="pull-right review-attributes-visible">
-    <% if can? :manage, @review %>
-      <small>
-        <%= link_to [:admin, @review], method: :delete,
-          data: {confirm: t("confirm")} do %>
-          <i class="glyphicon glyphicon-remove"></i>&nbsp;
-          <%= t "delete" %>
-        <% end %>
-      </small>
-    <% end %>
-  </div>
-</div>
+<%= render "review/review", review: @review %>
 <div id="comments">
   <div id="comment_count">
     <%= pluralize @review.comments.count, t("comment.comment") %>

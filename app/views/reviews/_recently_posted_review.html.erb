@@ -1,0 +1,59 @@
+<div class="review">
+  <div class="review-body">
+    <div class="review-rate">
+      <%= review.rate ? review.rate : 0 %>
+    </div>
+    <div class="review-title">
+      <strong><%= review.title %></strong>
+    </div>
+    <strong><%= link_to review.user.name, review.user %></strong>
+    <small class="text-muted">
+      <%= t("review.review_posted", at: l(review.created_at.to_date,
+        format: :short)).upcase %>
+    </small>
+    <%= image_tag (review.image.exists? ? review : review.anime).image.url(:thumb),
+        alt: "Review image", class: "img-responsive" %>
+    <div class="content">
+      <%= review.content %>
+    </div>
+    <% if user_signed_in? %>
+      <div class="review-footer">
+        <small>
+          <% if current_page?(anime_path) && !current_user.is_admin? %>
+            <%= link_to(t("add_comment"), review_path(review),
+              class: "btn btn-primary btn-xs") if user_signed_in? %>
+          <% end %>
+          <% if review.comments.count > 0 %>
+            <%= link_to review do %>
+              <%= review.comments.count %>
+              <i class="glyphicon glyphicon-comment"></i>
+            <% end %>
+          <% end %>
+          <div class="pull-right">
+            <%= t "review.review_vote_shortly" %>
+            <%= render "reviews/votes", review: review %>
+          </div>
+        </small>
+        <% if can? :manage, review %>
+          <div class="pull-right attributes-visible">
+            <small>
+              <% if !current_user.is_admin? %>
+                <%= link_to edit_review_path(review), review: review,
+                  remote: true do %>
+                  <i class="glyphicon glyphicon-edit"></i>&nbsp;
+                  <%= t "edit" %>
+                <% end %>
+                |
+              <% end %>
+              <%= link_to current_user.is_admin? ? [:admin, review] : review,
+                method: :delete, data: {confirm: t("confirm")} do %>
+                <i class="glyphicon glyphicon-trash"></i>&nbsp;
+                <%= t "delete" %>
+              <% end %>
+            </small>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

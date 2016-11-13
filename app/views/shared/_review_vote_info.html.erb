@@ -1,0 +1,8 @@
+<% if review.votes_for.size > 0 %>
+  <%= t "review.people_found_helpful", vote_helpful: review.get_likes.size,
+    total_vote: review.votes_for.size, percentage: number_to_percentage(
+    review.get_likes.size/review.votes_for.size*100,
+    precision: 1, strip_insignificant_zeros: true) %>
+<% else %>
+  <%= t "review.review_no_vote" %>
+<% end %>

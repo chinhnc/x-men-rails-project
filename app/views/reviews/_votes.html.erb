@@ -1,9 +1,12 @@
-<div id="helpful_count">
-  <%= I18n.translate "review.count_helpful", count: review.get_likes.size %>
-</div>
-<%= link_to votes_path(review_id: review.id), method: :post, remote: true do %>
-  <i class="votes-button">Helpful</i>
-<% end %>
-<%= link_to vote_path(id: review.id), method: :delete, remote: true do %>
-  <i class="votes-button">Not Helpful</i>
-<% end %>
+<span class="votes-button">
+  <%= link_to votes_path(review_id: review.id), method: :post, remote: true do %>
+    <i class="glyphicon glyphicon-thumbs-up"></i>&nbsp;
+    <%= t "review.yes" %>
+  <% end %>
+</span>
+<span class="votes-button">
+  <%= link_to vote_path(id: review.id), method: :delete, remote: true do %>
+    <i class="glyphicon glyphicon-thumbs-down"></i>&nbsp;
+    <%= t "review.no" %>
+  <% end %>
+</span>

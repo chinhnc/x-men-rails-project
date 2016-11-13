@@ -14,6 +14,7 @@ class AnimesController < ApplicationController
   def show
     @anime = Anime.find_by_id params[:id]
     @review = Review.new
-    @reviews = @anime.reviews.order created_at: :desc
+    @reviews = @anime.reviews.sort_by {|review| review.get_likes.size}.reverse
+    @recently_posted_reviews = @anime.reviews.order created_at: :desc
   end
 end
