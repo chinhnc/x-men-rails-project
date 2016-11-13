@@ -19,7 +19,7 @@ body {
   text-align: center;
 }
 
-a:hover {
+a:link, a:visited, a:hover, a:active {
   text-decoration: none;
 }
 

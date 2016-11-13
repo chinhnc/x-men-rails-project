@@ -8,7 +8,7 @@ class Category < ApplicationRecord
 
   class << self
     def options_for_select
-      order('LOWER(name)').map {|e| [e.name, e.id]}
+      order("LOWER(name)").map {|e| [e.name, e.id]}
     end
   end
 end

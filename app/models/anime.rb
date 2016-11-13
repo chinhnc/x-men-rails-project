@@ -10,8 +10,8 @@ class Anime < ApplicationRecord
   validates :image, presence: true
   validates :publish_year, presence: true,
     format: {
-      with: /(10|20)\d{2}/i,
-      message: "should be a four-digit year"
+      with: /(19|20)\d{2}/i,
+      message: "should be a valid year"
     }
   validates :category_id, presence: true
 
@@ -30,24 +30,25 @@ class Anime < ApplicationRecord
 
   scope :search_query, lambda {|query|
     return nil if query.blank?
-    where("LOWER(animes.title) LIKE ?", "%#{query.downcase}%")
+    where "LOWER(animes.title) LIKE ?", "%#{query.downcase}%"
   }
   scope :with_category_id, lambda { |category_ids|
-    where(category_id: [*category_ids])
+    where category_id: [*category_ids]
   }
   scope :sorted_by, lambda {|sort_option|
     direction = (sort_option =~ /desc$/) ? "desc" : "asc"
     case sort_option.to_s
     when /^name_/
-      order("LOWER(animes.title) #{direction}")
+      order "LOWER(animes.title) #{direction}"
     when /^rating_/
-      references(:reviews).group("animes.id").order("avg(reviews.rate) #{direction}")
+      #references(:reviews).group("animes.id").order "avg(reviews.rate) #{direction}"
+      left_outer_joins(:reviews).group("animes.id").order "avg(reviews.rate) #{direction}"
     when /^number_of_reviews_/
-      left_outer_joins(:reviews).group("animes.id").order("count(reviews.id) #{direction}")
+      left_outer_joins(:reviews).group("animes.id").order "count(reviews.id) #{direction}"
     when /^anime_reviewed_at_/
-      joins(:reviews).distinct.group("animes.id").order("reviews.created_at #{direction}")
+      joins(:reviews).distinct.group("animes.id").order "reviews.created_at #{direction}"
     else
-      raise(ArgumentError, "Invalid sort option: #{sort_option.inspect}")
+      raise ArgumentError, "Invalid sort option: #{sort_option.inspect}"
     end
   }
 
