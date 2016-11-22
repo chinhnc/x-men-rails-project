@@ -101,6 +101,7 @@ en:
   user:
     edit_profile: "Edit profile"
     user_profile: "%{username}'s Profile"
+    search: "Search name or email!"
   comment:
     comment: "comment"
   confirm: "Are you sure?"

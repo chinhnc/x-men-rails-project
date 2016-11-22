@@ -12,13 +12,13 @@
     <tbody>
       <% @users.each do |user| %>
         <tr>
-          <td class="clickable-row">
+          <td class="clickable-row" data-href="<%= user_path user %>">
             <%= user.name ? user.name : "NONAME" %>
           </td>
-          <td class="clickable-row">
+          <td class="clickable-row" data-href="<%= user_path user %>">
             <%= user.email %>
           </td>
-          <td class="clickable-row">
+          <td class="clickable-row" data-href="<%= user_path user %>">
             <%= user.created_at.strftime t "time_format" %>
           </td>
           <td>
