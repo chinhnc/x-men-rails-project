@@ -13,7 +13,6 @@ class Anime < ApplicationRecord
       with: /(19|20)\d{2}/i,
       message: "should be a valid year"
     }
-  validates :category_id, presence: true
 
   has_attached_file :image, styles: {medium: "300x300>", thumb: "100x100>"},
     default_url: "/images/sao.jpg"

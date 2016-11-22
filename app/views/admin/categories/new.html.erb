@@ -11,11 +11,6 @@
         <%= f.text_field :name, class: "form-control" %>
       </div>
 
-      <h2><%= t :addanimes %></h2>
-      <%= f.fields_for :animes do |anime| %>
-        <%= render "anime_fields", f: anime %>
-      <% end %>
-
       <div class="form-group">
         <%= link_to_add_fields t("anime.new"), f, :animes %>
       </div>

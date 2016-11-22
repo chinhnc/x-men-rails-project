@@ -9,18 +9,21 @@
     </h4>
     <span class="label label-info"><%= anime.category.name %></span>
     <p><%= t "anime.description" %>:
-    <%= truncate(anime.description, length: 200, separator: " ",
-      omission: "... ") {link_to "[Continue]", anime_path(anime)} %></p>
-    <div id="review_count">
-      <% reviews = anime.reviews %>
-      <%= pluralize @review_count[anime.id] ||= 0, t("review.review") %><%= reviews.last ? "
-        (last review: #{reviews.last.created_at.strftime(t :time_format_user)})" : "" %>
-    </div>
-  </div>
-  <div class="media-right media-middle each-anime-rating center">
-    <h3>
-      <%= @review_rating[anime.id] ||= 0 %>/5
-      <%= image_tag "/assets/star-icon-32.png", alt: "Anime image", width: 30, height: 30 %>
-    </h3>
+      <%= truncate(anime.description, length: 200, separator: " ",
+        omission: "... ") {link_to "[Continue]", anime_path(anime)} %>
+    </p>
+    <% if anime.reviews.present? %>
+      <div id="review_count">
+        <% reviews = anime.reviews %>
+        <%= pluralize @review_count[anime.id] ||= 0, t("review.review") %><%= reviews.last ? "
+          (last review: #{reviews.last.created_at.strftime(t :time_format_user)})" : "" %>
+      </div>
+      <div class="media-right media-middle each-anime-rating center">
+        <h3>
+          <%= @review_rating[anime.id] ||= 0 %>/5
+          <%= image_tag "/assets/star-icon-32.png", alt: "Anime image", width: 30, height: 30 %>
+        </h3>
+      </div>
+    <% end %>
   </div>
 </div>
