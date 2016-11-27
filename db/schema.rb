@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161016102930) do
+ActiveRecord::Schema.define(version: 20161127152830) do
 
   create_table "activities", force: :cascade do |t|
     t.string   "trackable_type"
@@ -42,6 +42,15 @@ ActiveRecord::Schema.define(version: 20161016102930) do
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
     t.index ["category_id"], name: "index_animes_on_category_id"
+  end
+
+  create_table "bookmarks", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "anime_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["anime_id"], name: "index_bookmarks_on_anime_id"
+    t.index ["user_id"], name: "index_bookmarks_on_user_id"
   end
 
   create_table "categories", force: :cascade do |t|
