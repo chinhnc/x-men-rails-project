@@ -9,6 +9,8 @@ class Admin::CategoriesController < ApplicationController
 
   def show
     @animes = @category.animes.order(created_at: :desc).paginate page: params[:page]
+    @review_count = Review.group("reviews.anime_id").count
+    @review_rating = Review.group("reviews.anime_id").average(:rate)
   end
 
   def new
@@ -50,7 +52,7 @@ class Admin::CategoriesController < ApplicationController
   private
   def category_params
     params.require(:category).permit :name,
-      animes_attributes: [:title, :description, :episode, 
+      animes_attributes: [:title, :description, :episode,
       :status, :publish_year, :image, :_destroy]
   end
 end
