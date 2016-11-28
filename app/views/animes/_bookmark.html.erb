@@ -1,0 +1,8 @@
+<%= form_for @bookmark, remote: true do |f| %>
+  <%= f.hidden_field :anime_id, value: anime.id %>
+  <%= button_tag type: "submit", class: "btn btn-primary" do %>
+    <i class="glyphicon glyphicon-pushpin"></i>&nbsp;|
+    <%= t "anime.bookmark" %>
+  <% end %>
+  <%= render "shared/error_messages", object: f.object %>
+<% end %>

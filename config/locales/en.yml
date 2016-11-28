@@ -81,6 +81,8 @@ en:
       one: "by %{count} person",
       other: "by %{count} people"
     }
+    bookmark: "Bookmark"
+    unbookmark: "Unbookmark"
   review:
     review: "Review"
     new_review: "New Review"

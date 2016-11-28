@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :reviews
   resources :votes, only: [:create, :destroy]
   resources :comments
+  resources :bookmarks, only: [:create, :destroy]
 
   namespace :admin do
     resources :users, only: [:index, :edit, :update, :destroy]

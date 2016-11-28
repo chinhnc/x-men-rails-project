@@ -11,6 +11,7 @@ class Ability
         can :read, :all
         can :manage, Comment, user_id: user.id
         can :manage, Review, user_id: user.id
+        can :manage, Bookmark, user_id: user.id
         can :manage, user
       end
     # The first argument to `can` is the action you are giving the user

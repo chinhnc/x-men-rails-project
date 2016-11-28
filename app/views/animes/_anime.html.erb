@@ -4,6 +4,12 @@
       <%= image_tag anime.image.url(:medium), alt: "Anime image", class: "img-responsive" %>
     </div>
     <div class="col-sm-9">
+      <% if user_signed_in? %>
+        <div class="pull-right" id="bookmark_<%= anime.id %>">
+          <%= render current_user.bookmark_anime?(anime.id) ?
+            "animes/unbookmark" : "animes/bookmark", anime: anime %>
+        </div>
+      <% end %>
       <h2><%= link_to anime.title, anime %></h2>
       <p class="lead">
         <%= t "anime.rating" %>:
