@@ -1,31 +1,30 @@
-<div id="anime-<%= anime.id %>" class="media each-anime">
-  <div class="media-left media-middle">
-    <%= image_tag anime.image.url, alt: "Anime image",
-      class: "img-responsive media-object each-anime-img" %>
-  </div>
-  <div class="media-body">
-    <h4 class="media-heading">
-      <%= link_to anime.title, anime %>
-    </h4>
-    <span class="label label-info"><%= anime.category.name %></span>
-    <p><%= t "anime.description" %>:
-      <%= truncate(anime.description, length: 200, separator: " ",
-        omission: "... ") {link_to "[Continue]", anime_path(anime)} %>
+<div class="blog-left-grid" id="anime-<%= anime.id %>">
+  <div class="blog-left-grid-left">
+    <h3><%= link_to anime.title, anime %> - <%= @review_rating[anime.id] ||= 0 %>/5
+      <%= image_tag "/assets/star-icon-32.png", alt: "Anime image", width: 30, height: 30 %></h3>
+    <p>
+      <span class="label label-info"><%= anime.category.name %></span>
     </p>
-    <div id="review_count">
-      <% reviews = anime.reviews %>
+  </div>
+  <div class="blog-left-grid-right">
+    <%= link_to anime_path(anime), class: "hvr-bounce-to-bottom non" do %>
       <%= pluralize @review_count[anime.id] ||= 0, t("review.review") %>
-      <% if reviews.last.present? %>
+    <% end %>
+  </div>
+  <div class="clearfix"> </div>
+    <%= image_tag anime.image.url, alt: "Anime image",
+      class: "img-responsive" %>
+    <p class="para"><%= t "anime.description" %>:
+      <%= truncate(anime.description, length: 200, separator: " ",
+        omission: "... ") %></p>
+    <% reviews = anime.reviews %>
+    <p class="para1"><% if reviews.last.present? %>
         <%= "(Latest review on #{reviews.last.created_at.strftime(t :time_format_user)}:" %>
         "<%= truncate(reviews.last.content, length: 200, separator: " ",
           omission: "") {link_to "...", review_path(reviews.last)} %>")
-      <% end %>
-    </div>
-  </div>
-  <div class="media-right media-middle each-anime-rating center">
-    <h3>
-      <%= @review_rating[anime.id] ||= 0 %>/5
-      <%= image_tag "/assets/star-icon-32.png", alt: "Anime image", width: 30, height: 30 %>
-    </h3>
+      <% end %></p>
+
+  <div class="rd-mre">
+    <%= link_to "Read More", anime_path(anime), class: "hvr-bounce-to-bottom quod" %>
   </div>
 </div>

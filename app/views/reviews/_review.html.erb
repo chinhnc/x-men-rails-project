@@ -1,68 +1,46 @@
-<div id="review_<%= review.id %>" class="review">
-  <div class="review-header">
-    <%= render "shared/review_vote_info", review: review %>
-    <div class="pull-right">
-      <% if review.comments.count > 0 %>
-        <%= link_to review do %>
-          <%= review.comments.count %>&nbsp;
-          <i class="glyphicon glyphicon-comment"></i>
-        <% end %>
-      <% end %>
-    </div>
+<div class="blog-left-grid" id="review_<%= review.id %>">
+  <div class="blog-left-grid-left">
+    <h3><%= link_to review.title, review_path(review) %> - <%= review.rate ? review.rate : 0 %>
+      <%= image_tag "/assets/star-icon-32.png", alt: "Anime image", width: 30, height: 30, class: "image-fix" %>
+    </h3>
+    <p>by <span><%= link_to review.user.name, review.user %></span> | <%= l(review.created_at, format: :long) %></p>
+    <p class="review-header"><%= render "shared/review_vote_info", review: review %></p>
   </div>
-  <div class="review-body">
-    <div class="review-user-info">
-      <strong><%= link_to review.user.name, review.user %></strong><br/>
-      <%= pluralize review.user.reviews.count, t("review.review") %>
-      <% if user_signed_in? %>
-        <div class="add-comment">
-          <% if current_page?(anime_path) && !current_user.is_admin? %>
-            <%= link_to(t("add_comment"), review_path(review),
-              class: "btn btn-primary btn-sm margin-top") if user_signed_in? %>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
-    <div class="review-content">
-      <div class="review-rate">
-        <%= review.rate ? review.rate : 0 %>
-      </div>
-      <div class="review-title">
-        <strong><%= review.title %></strong>
-      </div>
-      <small class="text-muted">
-        <%= t("review.review_posted", at: l(review.created_at, format: :long)).upcase %>
-      </small>
-      <%= image_tag (review.image.exists? ? review : review.anime).image.url(:medium),
-        alt: "Review image", class: "img-responsive" %>
-      <div class="content">
-        <%= review.content %>
-      </div>
-      <% if user_signed_in? %>
-        <div class="review-footer">
-          <%= t "review.review_vote" %>
-          <%= render "reviews/votes", review: review %>
-          <% if can? :manage, review %>
-            <div class="pull-right attributes-visible">
-              <small>
-                <% if !current_user.is_admin? %>
-                  <%= link_to edit_review_path(review), review: review,
-                    remote: true do %>
-                    <i class="glyphicon glyphicon-edit"></i>&nbsp;
-                    <%= t "edit" %>
-                  <% end %>
-                  |
-                <% end %>
-                <%= link_to current_user.is_admin? ? [:admin, review] : review,
-                  method: :delete, data: {confirm: t("confirm")} do %>
-                  <i class="glyphicon glyphicon-trash"></i>&nbsp;
-                  <%= t "delete" %>
-                <% end %>
-              </small>
-            </div>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
+  <div class="blog-left-grid-right">
+    <%= link_to review_path(review), class: "hvr-bounce-to-bottom non", id: "comment_count" do %>
+      <%= pluralize @review.comments.count, t("comment.comment") %>
+    <% end %>
   </div>
+  <div class="clearfix"> </div>
+  <a href="single.html"><%= image_tag (review.image.exists? ? review : review.anime).image.url(:medium),
+        alt: "Review image", class: "img-responsive image" %></a>
+  <p class="para"><%= review.content %></p>
+  <% if user_signed_in? %>
+    <div class="vote">
+      <%= t "review.review_vote" %>
+      <%= render "reviews/votes", review: review %>
+    </div>
+    <% if can? :manage, review %>
+      <div class="pull-right attributes-visible">
+        <small>
+          <% if !current_user.is_admin? %>
+            <%= link_to edit_review_path(review), review: review,
+              remote: true do %>
+              <i class="glyphicon glyphicon-edit"></i>&nbsp;
+              <%= t "edit" %>
+            <% end %>
+            |
+          <% end %>
+          <%= link_to current_user.is_admin? ? [:admin, review] : review,
+            method: :delete, data: {confirm: t("confirm")} do %>
+            <i class="glyphicon glyphicon-trash"></i>&nbsp;
+            <%= t "delete" %>
+          <% end %>
+        </small>
+      </div>
+    <% end %>
+    <div class="rd-mre">
+      <%= link_to "Add a comment", review_path(review), class: "hvr-bounce-to-bottom add_comment quod" %>
+    </div>
+  <% end %>
 </div>

@@ -1,6 +1,6 @@
 <% if @comment.save %>
   $("#error_messages").html("");
-  $("#comment_<%= @comment.id %>").html("<%= j render "comments/comment",
+  $("#comment_<%= @comment.id %>").html("<%= j render "comments/edited_comment",
     comment: @comment %>");
   $("#comment-form").show();
 <% else %>

@@ -1,21 +1,10 @@
-<ul class="nav nav-tabs" role="tablist">
-  <li role="presentation" class="active">
-    <a href="#activity" aria-controls="activity" role="tab" data-toggle="tab">Activities</a>
-  </li>
-  <li role="presentation">
-    <a href="#bookmark" aria-controls="bookmark" role="tab" data-toggle="tab">Bookmark</a>
-  </li>
-</ul>
-
-<div class="tab-content">
-  <div role="tabpanel" class="tab-pane fade in active" id="activity">
+<div class="row">
+  <div class="col-md-6">
+    <h3>Activities</h3>
     <ul class="list-group">
       <% @activities.each do |activity| %>
         <% if activity.trackable %>
-          <li class="list-group-item activity-item row">
-            <div class="pull-right">
-              <small class="text-muted"><%= time_ago_in_words(activity.created_at) %></small><br/>
-            </div>
+          <li class="list-group-item activity-item row" style="width: 100%;">
             <div>
               <strong><%= link_to activity.owner.name, activity.owner if activity.owner %></strong>
               <%= render_activity activity, display: :i18n %>
@@ -27,21 +16,25 @@
                 "<%= link_to activity.trackable.review.anime.title, activity.trackable.review.anime %>"
               <% end %>
             </div>
+            <small class="text-muted"> at <%= time_ago_in_words(activity.created_at) %></small>
           </li>
         <% end %>
       <% end %>
     </ul>
   </div>
-  <div role="tabpanel" class="tab-pane fade" id="bookmark">
-    <% @bookmarks.each do |bookmark| %>
-      <li class="list-group-item activity-item row">
-        <div class="pull-right">
-          <small class="text-muted"><%= time_ago_in_words(bookmark.created_at) %></small><br/>
-        </div>
-        <div>
-        <%= link_to bookmark.anime.title, bookmark.anime %>
-        </div>
-      </li>
-    <% end %>
+  <div class="col-md-6">
+    <h3>Bookmarks</h3>
+    <ul class="list-group">
+      <% @bookmarks.each do |bookmark| %>
+        <li class="list-group-item activity-item row" style="width: 100%;">
+          <div class="pull-right">
+            <small class="text-muted"><%= time_ago_in_words(bookmark.created_at) %></small><br/>
+          </div>
+          <div>
+          <%= link_to bookmark.anime.title, bookmark.anime %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
   </div>
 </div>
