@@ -3,9 +3,12 @@
   <%= render_filterrific_spinner %>
   <%= link_to "Reset filters", reset_filterrific_url, class: "pull-right" %>
 </div>
-
-<% @animes.each do |anime| %>
-  <%= render "shared/show_anime", anime: anime %>
-<% end %>
+<div class="blog">
+  <div class="blog-left">
+    <% @animes.each do |anime| %>
+      <%= render "shared/show_anime", anime: anime %>
+    <% end %>
+  </div>
+</div>
 
 <%= will_paginate @animes %>

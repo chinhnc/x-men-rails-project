@@ -1,105 +1,126 @@
-<div id="anime-<%= anime.id %>">
-  <div class="row">
-    <div class="col-sm-3">
+<!-- single -->
+  <div class="single-page-artical">
+    <div class="artical-content">
+      <h3>
+        <%= anime.title %>
+        <% if user_signed_in? %>
+          <div class="pull-right" id="bookmark_<%= anime.id %>">
+            <%= render current_user.bookmark_anime?(anime.id) ?
+              "animes/unbookmark" : "animes/bookmark", anime: anime %>
+          </div>
+        <% end %>
+        <br/>
+        <span style="font-size: 22px;"><%= t "anime.rating" %>:
+        <%= anime.reviews.average(:rate) ? anime.reviews.average(:rate) : 0 %>
+        <%= image_tag "/assets/star-icon-32.png", alt: "Anime image", width: 30, height: 30, class: "image-fix" %>
+        <%= I18n.translate "anime.count_rater", count: anime.reviews.count %></span>
+        <span style="font-size: 16px;">
+          (<%= pluralize anime.reviews.count, t("review.review") %>)
+        </span>
+      </h3>
       <%= image_tag anime.image.url(:medium), alt: "Anime image", class: "img-responsive" %>
+      <p>
+        <strong><%= t "anime.category" %>:</strong>
+        <%= anime.category.name %>
+      </p>
+      <p>
+        <strong><%= t "anime.episode" %>:</strong>
+        <%= anime.episode %>
+      </p>
+      <p>
+        <strong><%= t "anime.status" %>:</strong>
+        <%= anime.status %>
+      </p>
+      <p>
+        <strong><%= t "anime.publish_year" %>:</strong>
+        <%= anime.publish_year %>
+      </p>
+      <p>
+        <strong><%= t "anime.description" %>:</strong>
+        <%= anime.description %>
+      </p>
     </div>
-    <div class="col-sm-9">
-      <% if user_signed_in? %>
-        <div class="pull-right" id="bookmark_<%= anime.id %>">
-          <%= render current_user.bookmark_anime?(anime.id) ?
-            "animes/unbookmark" : "animes/bookmark", anime: anime %>
+    <% if user_signed_in? %>
+      <% unless current_user.review_anime?(anime.id).present? %>
+        <button data-toggle="collapse" data-target="#review_form" class="btn btn-primary">
+          <%= t "review.new_review" %>
+        </button>
+        <div id="review_form" class="collapse">
+          <section>
+            <%= render "shared/review_form", anime: anime %>
+          </section>
         </div>
       <% end %>
-      <h2><%= link_to anime.title, anime %></h2>
-      <p class="lead">
-        <%= t "anime.rating" %>:
-        <%= anime.reviews.average(:rate) ? anime.reviews.average(:rate) : 0 %>
-        <%= image_tag "/assets/star-icon-32.png", alt: "Anime image", width: 30, height: 30 %>
-        <%= I18n.translate "anime.count_rater", count: anime.reviews.count %>
-      </p>
-      <div id="review_count">
-        <%= pluralize anime.reviews.count, t("review.review") %>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-9">
-      <div class="description">
-        <%= t "anime.category" %>:
-        <%= anime.category.name %>
-      </div>
-      <div class="description">
-        <%= t "anime.publish_year" %>:
-        <%= anime.publish_year %>
-      </div>
-      <div class="description">
-        <%= t "anime.episode" %>:
-        <%= anime.episode %>
-      </div>
-      <div class="description">
-        <%= t "anime.status" %>:
-        <%= anime.status %>
-      </div>
-      <div class="description">
-        <%= t "anime.description" %>:
-        <%= anime.description %>
-      </div>
-    </div>
-  </div>
-</div>
-<% if user_signed_in? %>
-  <% unless current_user.review_anime?(anime.id).present? %>
-    <button data-toggle="collapse" data-target="#review_form" class="btn btn-primary">
-      <%= t "review.new_review" %>
-    </button>
-    <div id="review_form" class="collapse">
-      <section>
-        <%= render "shared/review_form", anime: anime %>
-      </section>
-    </div>
-  <% end %>
-<% else %>
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-    <%= t "review.new_review" %>
-  </button>
-  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal"
-            aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="myModalLabel">
-            <%= t "review.new_review" %>
-          </h4>
-        </div>
-        <div class="modal-body center">
-          <%= link_to t("layout.header.login"), new_user_session_path,
-            class: "btn btn-primary btn-lg" %>
-          <h4 class="fancy"><span>OR</span></h4>
-          <%= "Not a member?" %>
-          <%= link_to t("layout.header.signup"), new_user_registration_path,
-            class: "btn btn-primary btn-xs" %><br/>
-          <%= link_to "Forgot your password?", new_user_password_path %>
-        </div>
-        <div class="modal-footer center">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">
-            <%= "Sorry but I don't want to..." %>
-          </button>
+    <% else %>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+        <%= t "review.new_review" %>
+      </button>
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal"
+                aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">
+                <%= t "review.new_review" %>
+              </h4>
+            </div>
+            <div class="modal-body center">
+              <%= link_to t("layout.header.login"), new_user_session_path,
+                class: "btn btn-primary btn-lg" %>
+              <h4 class="fancy"><span>OR</span></h4>
+              <%= "Not a member?" %>
+              <%= link_to t("layout.header.signup"), new_user_registration_path,
+                class: "btn btn-primary btn-xs" %><br/>
+              <%= link_to "Forgot your password?", new_user_password_path %>
+            </div>
+            <div class="modal-footer center">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">
+                <%= "Sorry but I don't want to..." %>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-<% end %>
-<div class="row">
-  <div class="col-sm-8">
-    <h4 class="page-header"><%= t "review.most_helpful_review" %></h4>
-    <%= render @reviews if anime.reviews.any? %>
-  </div>
-  <div class="col-sm-4">
-    <h4 class="page-header"><%= t "review.recently_posted" %></h4>
-    <% @recently_posted_reviews.each do |review| %>
-      <%= render "reviews/recently_posted_review",
-        review: review if anime.reviews.any? %>
     <% end %>
+    <!-- blog -->
+      <div class="blog row" id="show_anime">
+        <div class="blog-left">
+          <div class="blog-left-grid"></div>
+          <%= render @reviews if anime.reviews.any? %>
+        </div>
+        <div class="blog-right">
+          <div class="sap_tabs">
+            <div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
+              <ul class="resp-tabs-list">
+                <li class="resp-tab-item grid1" aria-controls="tab_item-0" role="tab"><span>RECENTLY POSTED</span></li>
+              </ul>
+              <div class="resp-tabs-container">
+                <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
+                  <% @recently_posted_reviews.each do |review| %>
+                    <%= render "reviews/recently_posted_review",
+                      review: review if anime.reviews.any? %>
+                  <% end %>
+                </div>
+              </div>
+              <script type="text/javascript">
+                $(document).ready(function () {
+                  $('#horizontalTab').easyResponsiveTabs({
+                    type: 'default', //Types: default, vertical, accordion
+                    width: 'auto', //auto or any width like 600px
+                    fit: true   // 100% fit in a container
+                  });
+                });
+                 </script>
+              <script type="text/javascript">
+                jQuery(function($) {
+                  $(".swipebox").swipebox();
+                });
+              </script>
+            </div>
+          </div>
+        </div>
+      </div>
+<!-- //blog -->
   </div>
-</div>
+<!-- single -->

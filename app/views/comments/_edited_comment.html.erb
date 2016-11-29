@@ -1,0 +1,29 @@
+<div class="top-comment-left">
+  <%= link_to comment.user do %>
+    <%= image_tag "co.png", class: "img-responsive", alt: "avatar" %>
+  <% end %>
+</div>
+<div class="top-comment-right">
+  <ul>
+    <li><span class="left-at"><%= link_to comment.user.name, comment.user %></span></li>
+    <li><span class="right-at"><small class="text-muted"> &#9900;<%= comment.created_at.strftime t :time_format_user %></small></span></li>
+    <li>
+      <% if can? :manage, comment %>
+        <small>
+          <%= link_to edit_comment_path(comment), comment: comment,
+            remote: true do %>
+            <i class="glyphicon glyphicon-edit"></i>&nbsp;
+            <%= t "edit" %>
+          <% end %>
+          <%= link_to comment, method: :delete,
+            data: {confirm: t("confirm")}, remote: true do %>
+            <i class="glyphicon glyphicon-remove"></i>&nbsp;
+            <%= t "delete" %>
+          <% end %>
+        </small>
+      <% end %>
+    </li>
+  </ul>
+  <p><%= comment.content %></p>
+</div>
+<div class="clearfix"> </div>

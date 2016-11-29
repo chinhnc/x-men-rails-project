@@ -1,13 +1,16 @@
 <% provide :title, t("page_title.all_animes") %>
-<h1><%= t "page_title.all_animes" %></h1>
-
-<%= form_for_filterrific @filterrific do |f| %>
-  <div class="form-group">
-    <%= label_tag t("searchanime") %>
-    <%= f.text_field :search_query, placeholder: t(:search),
-      class: "filterrific-periodically-observed form-control" %>
-  </div>
-<% end %>
-<div id="filterrific_results">
-  <%= render "animes/animes", animes: @animes %>
+<div class="header-bottom">
+    <div class="header-bottom-top">
+      <%= form_for_filterrific @filterrific do |f| %>
+        <div class="form-group">
+          <%= label_tag t("searchanime") %>
+          <%= f.text_field :search_query, placeholder: t(:search),
+            class: "filterrific-periodically-observed form-control" %>
+        </div>
+      <% end %>
+    </div>
+    <div class="clearfix"> </div>
+    <div id="filterrific_results">
+      <%= render "animes/animes", animes: @animes %>
+    </div>
 </div>

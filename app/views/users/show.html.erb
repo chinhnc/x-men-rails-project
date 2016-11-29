@@ -1,21 +1,25 @@
 <% provide :title, @user.name %>
-<h1 class="page-header"><%= t "user.user_profile", username: @user.name %></h1>
+<div class="header-bottom">
+  <div class="header-bottom-top">
+    <h1 class="page-header"><%= t "user.user_profile", username: @user.name %></h1>
 
-<div class="user-info">
-  <%= "Email: " %>
-  <%= @user.email %><br/>
+    <div class="user-info">
+      <%= "Email: " %>
+      <%= @user.email %><br/>
+    </div>
+    <div class="user-info">
+      <%= "Review: " %>
+      <%= @user.reviews.count %><br/>
+    </div>
+    <div class="user-info">
+      <%= "Helpful rating: " %>
+      <%= (@user.reviews.map {|review| review.get_likes.size}).inject(0, :+) %>
+    </div>
+    <% if can? :manage, @user %>
+      <%= link_to t("edit_profile"), edit_user_registration_path,
+        class: "btn btn-default margin-top" %>
+    <% end %>
+    <h3><b><%= "Recent activities:" %></b></h3>
+    <%= render "shared/activities" %>
+  </div>
 </div>
-<div class="user-info">
-  <%= "Review: " %>
-  <%= @user.reviews.count %><br/>
-</div>
-<div class="user-info">
-  <%= "Helpful rating: " %>
-  <%= (@user.reviews.map {|review| review.get_likes.size}).inject(0, :+) %>
-</div>
-<% if can? :manage, @user %>
-  <%= link_to t("edit_profile"), edit_user_registration_path,
-    class: "btn btn-default margin-top" %>
-<% end %>
-<h3><b><%= "Recent activities:" %></b></h3>
-<%= render "shared/activities" %>

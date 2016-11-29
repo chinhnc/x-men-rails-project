@@ -2,7 +2,7 @@
   <%= f.hidden_field :review_id, value: review.id %>
   <%= f.text_area :content, rows: 3, placeholder: t(:add_comment), required: true,
     class: "form-control form-margin", id: "comment_content_#{review.id}" %>
-  <div class="pull-right">
+  <div class="">
     <%= f.submit t(:submit), class: "btn btn-primary margin-top" %>
   </div>
 <% end %>

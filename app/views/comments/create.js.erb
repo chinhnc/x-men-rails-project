@@ -1,7 +1,7 @@
 <% if @comment.save %>
   $("#comment_count").html("<%= pluralize @comment.review.comments.count, t("comment.comment") %>");
   $("#error_messages").html("");
-  $("#comment_<%= @comment.review_id %>").append("<%= j render "comments/comment",
+  $("#comments-list").append("<%= j render "comments/comment",
     comment: @comment %>");
   $("#comment_content_<%= @comment.review_id %>").val("")
 <% else %>
