@@ -5,5 +5,6 @@
     comment: @comment %>");
   $("#comment_content_<%= @comment.review_id %>").val("")
 <% else %>
+  $("#error_messages").html("");
   $("#error_messages").append("<%= j render "shared/error_messages", object: @comment %>");
 <% end %>
