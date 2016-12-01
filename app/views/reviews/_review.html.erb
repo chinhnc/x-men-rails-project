@@ -8,12 +8,14 @@
   </div>
   <div class="blog-left-grid-right">
     <%= link_to review_path(review), class: "hvr-bounce-to-bottom non", id: "comment_count" do %>
-      <%= pluralize @review.comments.count, t("comment.comment") %>
+      <%= pluralize review.comments.count, t("comment.comment") %>
     <% end %>
   </div>
   <div class="clearfix"> </div>
-  <a href="single.html"><%= image_tag (review.image.exists? ? review : review.anime).image.url(:medium),
-        alt: "Review image", class: "img-responsive image" %></a>
+    <%= link_to review do %>
+      <%= image_tag (review.image.exists? ? review : review.anime).image.url(:medium),
+        alt: "Review image", class: "img-responsive image" %>
+    <% end %>
   <p class="para"><%= review.content %></p>
   <% if user_signed_in? %>
     <div class="vote">
