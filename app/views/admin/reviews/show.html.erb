@@ -1,9 +1,5 @@
 <%= render "reviews/review", review: @review %>
 <div id="comments">
-  <div id="comment_count">
-    <%= pluralize @review.comments.count, t("comment.comment") %>
-  </div>
-  </br>
   <% if @review.comments.any? %>
     <% @review.comments.each do |comment| %>
       <div id="comment_<%= comment.id %>">
